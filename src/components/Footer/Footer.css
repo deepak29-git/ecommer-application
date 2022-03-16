@@ -1,0 +1,18 @@
+.footer-section{
+    height:6rem;
+    padding-top: 1rem;
+    color:var(--white-color);
+    background-color:var(--black-color);
+    padding-bottom:1rem;
+  
+}
+.footer-icon{
+  cursor: pointer;
+}
+
+  .social-media {
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
