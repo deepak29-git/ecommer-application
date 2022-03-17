@@ -6,26 +6,6 @@ import { v4 as uuid } from "uuid";
  * */
 
 export const products = [
-  // {
-  //   _id: uuid(),
-   
-  //   categoryName: "non-fiction",
-  // },
-  // {
-  //   _id: uuid(),
-  //   title: "You are Winner",
-  //   author: "Junaid Qureshi",
-  //   price: "3000",
-  //   categoryName: "horror",
-  // },
-  // {
-  //   _id: uuid(),
-  //   title: "Think and Grow Rich",
-  //   author: "Shiv Khera",
-  //   price: "1000",
-  //   categoryName: "fiction",
-  // },
-
   {
     id: uuid(),
     brand:"Roadster",
@@ -64,7 +44,7 @@ export const products = [
     brand:"H&M",
     title: "3-pack Skinny Fit Jeans",
     image:"https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/16591246/2021/12/23/5f92ab9d-4c1c-4ffd-a5fd-6a994fa7052e16402325488993-packComfortStretchSkinnyFitJeans1.jpg",
-    price: 28999,
+    price: 899,
     rating: 3
   },
   {

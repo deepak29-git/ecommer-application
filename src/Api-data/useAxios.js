@@ -7,32 +7,18 @@ const api = "/api/products";
 
 export const useAxios = () => {
   const [data, setData] = useState([]);
+  const [loader,setLoader]=useState(false);
   useEffect(() => {
     (async () => {
       try{
+        setLoader(true);
         const {data} = await axios.get(api);
-        // console.log(data.products)
-        // console.log(data.products)
+        setLoader(false);
         setData(data.products);
       }catch(error){
         console.log(error)
       }
     })();
   }, []);
-  // console.log(data)
-  return {data}
+  return {data,loader}
 };
-
-
-const loadProducts=async(dispatch)=>{
-    try{
-      dispatch({type:"LOAD_DATA"});
-      const {data} = await axios.get(api);
-      dispatch({type:"LOAD_DATA_SUCCESS",payload:data.products})
-    }catch(error){
-      console.log(error)
-    }
-  }
-
-
-  export {loadProducts}

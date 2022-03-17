@@ -1,4 +1,4 @@
-import {useFilter} from '../Context/filter-context' 
+
 const getSortedProducts=(data,sorting)=>{
     if(sorting==="HIGH_TO_LOW")
         return [...data].sort((a,b)=>b.price-a.price)
@@ -7,7 +7,6 @@ const getSortedProducts=(data,sorting)=>{
     
     return data
 }
-
 
 export {getSortedProducts}
 

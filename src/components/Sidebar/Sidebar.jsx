@@ -2,16 +2,16 @@ import "./Sidebar.css";
 import { useFilter } from '../../Context/filter-context';
 
 export const Sidebar = () => {
-  const {dispatch}=useFilter();
+  const {state,dispatch}=useFilter();
   return (
     <div>
-     <span id="ecom-hamburger" class="material-icons">
+     <span id="ecom-hamburger" className="material-icons">
         menu
         </span>
       <aside className="ecom-sidebar">
         <div className="space-between">
           <h3>Filters</h3>
-          <button className="btn clear-btn" href="">
+          <button className="btn clear-btn">
             CLEAR
           </button>
         </div>
@@ -26,48 +26,43 @@ export const Sidebar = () => {
         </label>
         <h3 className="mt-1 mb-1">Price range</h3>
         <div className="slider">
-          <input type="range" />
-          <datalist id="tickmarks">
-            <option value="0" label="0%"></option>
-            <option value="10"></option>
-            <option value="20"></option>
-            <option value="30"></option>
-            <option value="40"></option>
-            <option value="50" label="50%"></option>
-            <option value="60"></option>
-            <option value="70"></option>
-            <option value="80"></option>
-            <option value="90"></option>
-            <option value="100" label="100%"></option>
+          <input value={state.priceRange} type="range" onChange={(e)=>dispatch({type:"PRICE_RANGE",value:e.target.value})} min="0" max="5000" step="any"/>
+          <datalist id="tickmarks" className="space-between">
+            <option value="0" label="min 0"></option>
+            <option value="1000"></option>
+            <option value="2000"></option>
+            <option value="3000"></option>
+            <option value="4000"></option>
+            <option value="5000" label="Max 5k"></option>
           </datalist>
           <h3 className="mb-1 mt-1">Category</h3>
           <div>
-            <label for="Men Clothing">
+            <label >
               <input className="mr-half mb-half" type="checkbox" />
               Mens Clothing
             </label>
           </div>
 
-          <label for="Women Clothing">
+          <label>
             <input className="mr-half" type="checkbox" />
             Women Clothing
           </label>
           <h3 className="mt-1 mb-1">Rating</h3>
           <div>
-            <label for="">
+            <label>
               <input className="mr-half mb-half" type="radio" name="rating" />4
               Stars & above
             </label>
           </div>
           <div>
-            <label for="">
+            <label>
               <input className="mr-half" type="radio" name="rating" />3 Stars &
               above
             </label>
           </div>
           <h3 className="mt-1 mb-1">Brand</h3>
           <div>
-            <label for="">
+            <label>
               <input
                 className="mr-half mb-half"
                 type="checkbox"
@@ -77,7 +72,7 @@ export const Sidebar = () => {
             </label>
           </div>
           <div>
-            <label for="">
+            <label>
               <input
                 className="mr-half mb-half"
                 type="checkbox"
@@ -87,7 +82,7 @@ export const Sidebar = () => {
             </label>
           </div>
           <div>
-            <label for="">
+            <label>
               <input
                 className="mr-half mb-half"
                 type="checkbox"
@@ -97,7 +92,7 @@ export const Sidebar = () => {
             </label>
           </div>
           <div>
-            <label for="">
+            <label>
               <input
                 className="mr-half mb-half"
                 type="checkbox"
@@ -107,7 +102,7 @@ export const Sidebar = () => {
             </label>
           </div>
           <div>
-            <label for="">
+            <label>
               <input
                 className="mr-half mb-half"
                 type="checkbox"
@@ -117,7 +112,7 @@ export const Sidebar = () => {
             </label>
           </div>
           <div>
-            <label for="">
+            <label>
               <input
                 className="mr-half mb-half"
                 type="checkbox"
@@ -127,7 +122,7 @@ export const Sidebar = () => {
             </label>
           </div>
           <div>
-            <label for="">
+            <label>
               <input
                 className="mr-half mb-half"
                 type="checkbox"
@@ -137,7 +132,7 @@ export const Sidebar = () => {
             </label>
           </div>
           <div>
-            <label for="">
+            <label>
               <input
                 className="mr-half mb-half"
                 type="checkbox"
@@ -147,7 +142,7 @@ export const Sidebar = () => {
             </label>
           </div>
           <div>
-            <label for="">
+            <label>
               <input
                 className="mr-half mb-half"
                 type="checkbox"
