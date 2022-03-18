@@ -38,9 +38,13 @@ input[type=radio],input[type=checkbox] {
   width: 100%;
 }
 
-.clear-btn {
-  text-decoration: underline;
+.clear-btn{
   letter-spacing:2px;
+  color:var(--primary-color);
+}
+.clear-btn:hover {
+  text-decoration: underline;
+  
 }
 
 
