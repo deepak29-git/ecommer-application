@@ -7,6 +7,22 @@ const FilterProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
     sorting: null,
     priceRange: 5000,
+    category: null,
+    ratings: null,
+    brand: {
+      roadster: false,
+      nautica: false,
+      puma: false,
+      adidas: false,
+      hAndm: false,
+      colorbar: false,
+      klotthe: false,
+      talesAndStories: false,
+      dove: false,
+    },
+    includeOutOfStock: false,
+    fastDelivery: false,
+    clearAll: false,
   });
 
   return (
