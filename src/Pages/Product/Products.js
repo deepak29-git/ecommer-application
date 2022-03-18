@@ -24,12 +24,12 @@ export const Products = () => {
     fastDelivery,
     clearAll
   } = state;
-  const {roadster,nautica,puma,adidas,hAndm,colorbar,klotthe,talesAndStories,dove}=brand;
+  
   const { loader, data } = useAxios();
   const sortedByPrice = getSortedProducts(data, sorting);
   const sortedByPriceRange = getPriceRange(sortedByPrice, priceRange);
   const sortedByRatings = getRating(sortedByPriceRange, ratings);
-  const sortedByBrand = getBrand(sortedByRatings, roadster,nautica,puma,adidas,hAndm,colorbar,klotthe,talesAndStories,dove);
+  const sortedByBrand = getBrand(sortedByRatings, brand);
   const sortedByIncludeOutOfStock = getIncludeOutOfStock(
     sortedByBrand,
     includeOutOfStock

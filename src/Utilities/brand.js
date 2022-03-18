@@ -1,58 +1,59 @@
-export const getBrand = (data, roadster, nautica,puma,adidas,hAndm,colorbar,klotthe,talesAndStories,dove) => {
+export const getBrand = (data, brand) => {
 
   let filteredBrand = [];
-  if (roadster === false && nautica === false) {
+  
+  if (brand.roadster === false && brand.nautica === false && brand.puma===false && brand.adidas===false && brand.hAndm===false && brand.colorbar===false && brand.klotthe===false && brand.talesAndStories===false && brand.dove===false) {
     return data;
   }
-  if (roadster) {
+  if (brand.roadster) {
     let newList = data.filter(
       (product) => product.brand.toLowerCase() === "roadster"
     );
     filteredBrand.push(...newList);
   }
-  if (nautica) {
+  if (brand.nautica) {
     let newList = data.filter(
       (product) => product.brand.toLowerCase() === "nautica"
     );
     filteredBrand.push(...newList);
   }
-  if (puma) {
+  if (brand.puma) {
     let newList = data.filter(
       (product) => product.brand.toLowerCase() === "puma"
     );
     filteredBrand.push(...newList);
   }
-  if (adidas) {
+  if (brand.adidas) {
     let newList = data.filter(
       (product) => product.brand.toLowerCase() === "adidas"
     );
     filteredBrand.push(...newList);
   }
-  if (hAndm) {
+  if (brand.hAndm) {
     let newList = data.filter(
       (product) => product.brand === "H&M"
     );
     filteredBrand.push(...newList);
   }
-  if (colorbar) {
+  if (brand.colorbar) {
     let newList = data.filter(
       (product) => product.brand.toLowerCase() === "colorbar"
     );
     filteredBrand.push(...newList);
   }
-  if (klotthe) {
+  if (brand.klotthe) {
     let newList = data.filter(
       (product) => product.brand.toLowerCase() === "klotthe"
     );
     filteredBrand.push(...newList);
   }
-  if (talesAndStories) {
+  if (brand.talesAndStories) {
     let newList = data.filter(
       (product) => product.brand === "TALES & STORIES"
     );
     filteredBrand.push(...newList);
   }
-  if (dove) {
+  if (brand.dove) {
     let newList = data.filter(
       (product) => product.brand.toLowerCase() === "dove"
     );
