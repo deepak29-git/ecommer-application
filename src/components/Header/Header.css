@@ -1,0 +1,24 @@
+.ecom-header{
+    border-bottom: 1px solid var(--grey-color);
+    padding-bottom:1rem;
+}
+
+.ecom-input{
+    padding:0.5rem;
+}
+
+.input-parent{
+    position:relative;
+    
+}
+
+#ecom-search{
+    position:absolute;
+    right:10px;
+    top:7px;
+    cursor: pointer;
+}
+
+.black{
+    color:var(--black-color)
+}

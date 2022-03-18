@@ -1,0 +1,25 @@
+
+.five-item > * {
+    background-color: var(--light-grey);
+    padding: 1.5rem;
+    display: grid;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: center;
+    min-height: 200px;
+  }
+  
+  .five-item {
+    display: grid;
+    grid-gap: 1rem;
+    max-width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .scale {
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+  }
+  .scale:hover {
+    transform: scale(1.1);
+  }
