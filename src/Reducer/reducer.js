@@ -1,5 +1,7 @@
 export const reducer = (state, action) => {
   switch (action.type) {
+    case "SEARCH":
+      return {...state,search:action.value}
     case "HIGH_TO_LOW":
       return { ...state, sorting: "HIGH_TO_LOW" };
     case "LOW_TO_HIGH":
