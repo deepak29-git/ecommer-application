@@ -1,10 +1,10 @@
 import mens from "../../assets/mens.jpg";
 import womens from "../../assets/womens.jpg";
-import electronics from "../../assets/electronics.jpg";
-import mobile from "../../assets/mobile.jpg";
-import grocery from "../../assets/grocery.jpg";
-import '../Category/Category.css'
-import {Link} from 'react-router-dom'
+import kids from "../../assets/kids.jpg";
+import homeAndLiving from "../../assets/home-and-living.jpg";
+import beauty from "../../assets/beauty.jpg";
+import "../Category/Category.css";
+import { Link } from "react-router-dom";
 
 export const Category = () => {
   return (
@@ -13,11 +13,10 @@ export const Category = () => {
       <div className="five-item">
         <div className="scale">
           <Link to="/products">
-          
-              <img src={mens} alt="mens" />
+            <img src={mens} alt="mens" />
             <p className="fs-3 center-text semibold">Mens</p>
           </Link>
-        </div>  
+        </div>
         <div className="scale">
           <Link to="/products">
             <img src={womens} alt="womens" />
@@ -26,20 +25,20 @@ export const Category = () => {
         </div>
         <div className="scale">
           <Link to="/products">
-            <img src={electronics} alt="electronics" />
-            <p className="fs-3 center-text semibold">Electronics</p>
+            <img src={kids} alt="kids" />
+            <p className="fs-3 center-text semibold">Kids</p>
           </Link>
         </div>
         <div className="scale">
           <Link to="/products">
-            <img src={mobile} alt="mobile" />
-            <p className="fs-3 center-text semibold">Mobile</p>
+            <img src={homeAndLiving} alt="homeAndLiving" />
+            <p className="fs-3 center-text semibold">Home & Living</p>
           </Link>
         </div>
         <div className="scale">
           <Link to="/products">
-            <img src={grocery} alt="grocery" />
-            <p className="fs-3 center-text semibold">Grocery</p>
+            <img src={beauty} alt="beauty" />
+            <p className="fs-3 center-text semibold">Beauty</p>
           </Link>
         </div>
       </div>
