@@ -18,3 +18,9 @@
   border-radius:20px;
 }
 
+
+.loading-gif{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

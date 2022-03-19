@@ -48,7 +48,7 @@ export const Products = () => {
       <div className="grid-container">
         <Sidebar />
         <div className="ecom-main">
-          {loader && <h1>Loading....</h1>}
+          {loader && <div className="loading-gif" ><img src="https://c.tenor.com/gJLmlIn6EvEAAAAC/loading-gif.gif" alt="loading"/></div>}
           {sortedData.map((product) => (
             <ProductDisplay key={product.id} product={product} />
           ))}
