@@ -8,6 +8,7 @@ const FilterProvider = ({ children }) => {
     sorting: null,
     priceRange: 5000,
     category: null,
+    homeCategory:{},
     ratings: null,
     brand: {
       roadster: false,
