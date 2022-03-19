@@ -12,6 +12,7 @@ import { getBrand } from "../../Utilities/brand";
 import { getIncludeOutOfStock } from "../../Utilities/includeOutOfStock";
 import { getFastDelivery } from "../../Utilities/fastDelivery";
 import {getClearAll} from "../../Utilities/clearAll";
+import {getSearch} from '../../Utilities/search'
 export const Products = () => {
   const { state } = useFilter();
   const {
@@ -22,6 +23,7 @@ export const Products = () => {
     brand,
     includeOutOfStock,
     fastDelivery,
+    search,
     clearAll
   } = state;
   
@@ -39,7 +41,8 @@ export const Products = () => {
     fastDelivery
   );
   const dataClear=getClearAll(sortedByFastDelivery,clearAll)
-  const sortedData = getCategory(dataClear, category);
+  const searchProduct=getSearch(dataClear,search)
+  const sortedData = getCategory(searchProduct, category);
 
   return (
     <div>
