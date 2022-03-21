@@ -81,7 +81,7 @@ export const Sidebar = () => {
                 type="radio"
                 checked={state.category==="men"}
                 name="category"
-                onChange={() => dispatch({ type: "men" })}
+                onChange={() => dispatch({ type: "MEN" })}
               />
               Men
             </label>
@@ -93,7 +93,7 @@ export const Sidebar = () => {
                 type="radio"
                 checked={state.category==="women"}
                 name="category"
-                onChange={() => dispatch({ type: "women" })}
+                onChange={() => dispatch({ type: "WOMEN" })}
               />
               Women
             </label>
@@ -105,7 +105,7 @@ export const Sidebar = () => {
                 type="radio"
                 checked={state.category==="kids"}
                 name="category"
-                onChange={() => dispatch({ type: "kids" })}
+                onChange={() => dispatch({ type: "KIDS" })}
               />
               Kids
             </label>
@@ -117,7 +117,7 @@ export const Sidebar = () => {
                 type="radio"
                 checked={state.category==="home&living"}
                 name="category"
-                onChange={() => dispatch({ type: "home&living" })}
+                onChange={() => dispatch({ type: "HOME & LIVING" })}
               />
               Home & Living
             </label>
@@ -129,7 +129,7 @@ export const Sidebar = () => {
                 type="radio"
                 name="category"
                 checked={state.category==="beauty"}
-                onChange={() => dispatch({ type: "beauty" })}
+                onChange={() => dispatch({ type: "BEAUTY" })}
               />
               Beauty
             </label>
