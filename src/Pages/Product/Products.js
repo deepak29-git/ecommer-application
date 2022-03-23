@@ -28,6 +28,7 @@ export const Products = () => {
   } = state;
   
   const { loader, data } = useAxios();
+  
   const sortedByPrice = getSortedProducts(data, sorting);
   const sortedByPriceRange = getPriceRange(sortedByPrice, priceRange);
   const sortedByRatings = getRating(sortedByPriceRange, ratings);
@@ -53,7 +54,7 @@ export const Products = () => {
         <div className="ecom-main">
           {loader && <div className="loading-gif" ><img src="https://c.tenor.com/gJLmlIn6EvEAAAAC/loading-gif.gif" alt="loading"/></div>}
           {sortedData.map((product) => (
-            <ProductDisplay key={product.id} product={product} />
+            <ProductDisplay key={product.id} product={product}/>
           ))}
         </div>
       </div>

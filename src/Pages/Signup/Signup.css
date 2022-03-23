@@ -1,0 +1,22 @@
+.form-control,.form-label,.input-group{
+    margin: 0;
+    padding: 0;
+}
+
+.form-control{
+    margin-bottom: 10px;
+}
+
+.form-control{
+    padding: 0.4rem;
+}
+.form-label{
+    margin-bottom: 0.3rem;
+}
+
+
+
+.login-container{
+    margin: 0;
+    /* padding: 0; */
+}

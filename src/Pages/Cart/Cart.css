@@ -1,0 +1,66 @@
+.card {
+  width: 30rem;
+  padding-left: 2rem;
+}
+
+.wishlist-icon {
+  position: relative;
+}
+.card-bg {
+  height: 17rem;
+}
+.cart-btn {
+  padding: 0.7rem 0;
+  margin-top: 1rem;
+}
+
+#add-qty,
+#remove-qty {
+  cursor: pointer;
+}
+
+.qty-title {
+  margin-right: 0.5rem;
+}
+
+.grey-border {
+  border: 1px solid var(--grey-color);
+}
+.price-detail-container {
+  width: 28rem;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.remove-cart {
+  background-color: var(--light-grey);
+  border-radius: 0;
+}
+.remove-cart:hover {
+  background-color: var(--grey-color);
+}
+
+.qty-container {
+  display: flex;
+}
+
+input[type="number"] {
+  width: 2rem;
+  text-align: center;
+  padding-left: 8px;
+  outline: none;
+  margin: 0 0.5rem;
+}
+
+@media only screen and (max-width: 31.25em) {
+  .horizontal {
+    margin-bottom: 6rem;
+  }
+  .btn-group {
+    display: flex;
+    width: 500px;
+  }
+  .cart-btn {
+    padding: 0.5rem 1rem;
+  }
+}

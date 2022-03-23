@@ -20,5 +20,7 @@ export const useAxios = () => {
       }
     })();
   }, []);
-  return {data,loader}
+  return {data,loader,setLoader}
 };
+
+

@@ -1,15 +1,23 @@
 import {useFilter} from '../../Context/filter-context'
 import './Header.css'
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
+import { useCart } from '../../Context/cart-context';
 
 export const Header = () => {
   const {dispatch} =useFilter()
+  const {state}=useCart();
   return (
     <header className="ecom-header mt-1 plr-2 mb-1">
         <nav className="ecom-nav">
           <Link to="/" className="ecom-title black">
             <h2 >Shop<span className="ui-text">io</span></h2>
-          </Link>
+          </Link >
+          <NavLink className="navlink" to="/">
+            <div>Home</div>
+          </NavLink>
+          <NavLink className="navlink" to="/products">
+          <div>Products</div>
+          </NavLink>
           <div className="input-parent" onChange={(e)=>dispatch({type:"SEARCH",value:e.target.value})}>
             <input className="ecom-input" type="text" placeholder="Search for products brands and more" />
             <span id="ecom-search" className="material-icons">
@@ -27,7 +35,7 @@ export const Header = () => {
             <Link to="/cart">
             <div className="badge">
               <span id="shopping-cart" className="material-icons black">shopping_cart</span>  
-              <div className="number">0</div>
+              <div className="number">{state.itemCount}</div>
             </div>
             </Link>
             </div>

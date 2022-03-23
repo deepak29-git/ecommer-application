@@ -22,3 +22,8 @@
 .black{
     color:var(--black-color)
 }
+
+.navlink:hover{
+    color:var(--primary-color)
+}
+
