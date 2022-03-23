@@ -1,0 +1,12 @@
+.products-details-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
+}
+
+.product-content{
+    width: 31.25rem;
+    line-height: 1.5rem;
+}
+

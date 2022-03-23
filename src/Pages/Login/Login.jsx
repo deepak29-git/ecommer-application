@@ -1,10 +1,27 @@
 import "../Login/Login.css";
 import { Link } from "react-router-dom";
-import {Header} from '../../components/Header/Header'
+import { Header } from "../../components/Header/Header";
+import { useState } from "react";
+import { useAuth } from "../../Context/auth-context";
 export const Login = () => {
+  const {loginUser,authState} =useAuth()
+  const {loading}=authState;
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const handlerInput = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+
+  };
+
+  const handleUserLogin = async () => {
+    loginUser(user)
+  };
   return (
     <>
-    <Header/>
+      <Header />
       <main className="login">
         <div className="login-container mt-2">
           <h3 className="center-text">Login</h3>
@@ -12,13 +29,23 @@ export const Login = () => {
             <label className="form-label">Email address</label>
             <input
               className="form-control"
-              type="text"
+              type="email"
+              name="email"
+              value={user.email}
+              onChange={handlerInput}
               placeholder="Enter Email"
             />
           </div>
           <div className="input-group">
             <label className="form-label">Password </label>
-            <input className="form-control" placeholder="Enter Password" />
+            <input
+              type="password"
+              name="password"
+              value={user.password}
+              onChange={handlerInput}
+              className="form-control"
+              placeholder="Enter Password"
+            />
             <div className="checkbox-parent">
               <input id="show-pass" type="checkbox" />
               <label htmlFor="show-pass">Show password</label>
@@ -35,7 +62,13 @@ export const Login = () => {
           </div>
 
           <div className="center">
-            <button className="my-2 login-btn">Login</button>
+            <button
+              type="submit"
+              onClick={handleUserLogin}
+              className="my-2 login-btn"
+            >
+              {loading ? "Loading....": "Login" }
+            </button>
           </div>
           <div className="center">
             <Link to="/signup" className="black-text">

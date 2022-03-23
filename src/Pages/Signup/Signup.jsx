@@ -1,26 +1,88 @@
-import "../Login/Login";
+import "../Signup/Signup.css";
 import { Link } from "react-router-dom";
 import {Header} from '../../components/Header/Header'
+import { useState } from "react";
+import { useAuth } from "../../Context/auth-context";
+
+
 export const Signup = () => {
+  const {signupUser } =useAuth()
+  const [user,setUser]=useState({
+    firstName:"",
+    lastName:"",
+    email:"",
+    newPassword:"",
+    confirmPassword:""
+  })
+
+  const userInputHandler=(e)=>{
+    const {name,value}=e.target;
+    setUser({...user,[name]:value})
+  }
+
+  console.log(user)
+
+  const signupHandler=()=>{
+    signupUser(user)
+  }
   return (
     <>
     <Header/>
     <main className="login">
-      <div className="login-container mt-2">
+      <div className="login-container ">
         <h3 className="center-text">Signup</h3>
         <div className="input-group">
-          <label className="form-label">Email address</label>
+          <label className="form-label">First Name</label>
           <input
             className="form-control"
             type="text"
+            name="firstName"
+            value={user.firstName}
+            onChange={userInputHandler}
             placeholder="Enter Email"
           />
         </div>
         <div className="input-group">
-          <label className="form-label">Password</label>
+          <label className="form-label">Last Name</label>
           <input
             className="form-control"
-            type="text"
+            type="text" 
+            name="lastName"
+            value={user.lastName}
+            onChange={userInputHandler}
+            placeholder="Enter Email"
+          />
+        </div>
+        <div className="input-group">
+          <label className="form-label">Email address</label>
+          <input
+            className="form-control"
+            type="email"
+            name="email"
+            onChange={userInputHandler}
+            value={user.email}
+            placeholder="Enter Email"
+          />
+        </div>
+        <div className="input-group">
+          <label className="form-label">New Password</label>
+          <input
+            className="form-control"
+            type="password"
+            name="newPassword"
+            onChange={userInputHandler}
+            value={user.newPassword}
+            placeholder="Enter Password"
+          />
+        </div>
+        <div className="input-group">
+          <label className="form-label">Confirm Password</label>
+          <input
+            className="form-control"
+            type="password"
+            name="confirmPassword"
+            value={user.confirmPassword}
+            onChange={userInputHandler}
             placeholder="Enter Password"
           />
         </div>
@@ -30,7 +92,7 @@ export const Signup = () => {
         </div>
 
         <div className="center">
-          <button className="my-2 login-btn">Create New Account</button>
+          <button onClick={signupHandler} className="my-2 login-btn">Create New Account</button>
         </div>
         <div className="center">
           <Link className="black-text" to="/login">

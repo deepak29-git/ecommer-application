@@ -6,6 +6,8 @@ import {WishList} from './Pages/WishList/WishList'
 import {Login} from './Pages/Login/Login'
 import {Signup} from './Pages/Signup/Signup'
 import {Cart} from './Pages/Cart/Cart'
+import {NotFound} from './Pages/NotFound/NotFound'
+import { ProductDetails } from "./Pages/ProductDetails/ProductDetails";
 
 function App() {
   return (
@@ -13,10 +15,12 @@ function App() {
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/products" element={<Products/>}/>
+      <Route path="/products/:id" element={<ProductDetails/>}/>
       <Route path="/wishlist" element={<WishList/>}/>
       <Route path="/cart" element={<Cart/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Signup/>}/>
+      <Route path="*" element={<NotFound/>}/>
     </Routes> 
     </div>
   );

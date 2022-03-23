@@ -16,6 +16,13 @@
 .ecom-card{
   width: 300px;
   border-radius:20px;
+  position: relative;
+}
+#wishlist-icon{
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
 }
 
 
