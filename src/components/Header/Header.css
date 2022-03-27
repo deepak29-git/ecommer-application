@@ -1,29 +1,47 @@
-.ecom-header{
-    border-bottom: 1px solid var(--grey-color);
-    padding-bottom:1rem;
+.ecom-header {
+  border-bottom: 1px solid var(--grey-color);
+  padding-bottom: 1rem;
 }
 
-.ecom-input{
-    padding:0.5rem;
+.ecom-input {
+  padding-left: 30px;
+  height: 40px;
 }
 
-.input-parent{
-    position:relative;
-    
+
+.standard-nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap ;
 }
 
-#ecom-search{
-    position:absolute;
-    right:10px;
-    top:7px;
-    cursor: pointer;
+.input-parent {
+  width: 250px;
 }
 
-.black{
-    color:var(--black-color)
+.left-side {
+  margin-left: auto;
+  display: flex;
+  gap: 20px;
 }
 
-.navlink:hover{
-    color:var(--primary-color)
+#ecom-search {
+  position: absolute;
+  left: 4px;
+  top: 8px;
+  cursor: pointer;
 }
 
+.black {
+  color: var(--black-color);
+}
+
+.navlink:hover {
+  color: var(--primary-color);
+}
+
+.login-btn{
+  width: 200px;
+}

@@ -23,14 +23,10 @@ input[type=radio],input[type=checkbox] {
   transform:scale(1.3);
   cursor: pointer;
 }
-
-.scale {
-  transition: all 0.5s ease-in-out;
+#ecom-hamburger{
   cursor: pointer;
 }
-.scale:hover {
-  transform: scale(1.1);
-}
+
 
 /* button style */
 
@@ -44,20 +40,7 @@ input[type=radio],input[type=checkbox] {
 }
 .clear-btn:hover {
   text-decoration: underline;
-  
 }
 
 
-#ecom-hamburger {
-  display: none;
-  font-size: 2rem;
-}
-@media only screen and (max-width: 1088px) {
-  .ecom-sidebar {
-    display: none;
-  }
-  #ecom-hamburger {
-    display: block;
-  }
-}
 
