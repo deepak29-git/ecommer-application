@@ -5,14 +5,20 @@ import { useCart } from "../../Context/cart-context";
 import "../ProductDetails/ProductDetails.css";
 import { Header } from "../../components/Header/Header";
 import "../Product/Products.css";
+import "../ProductDetails/ProductDetails.css";
 import { useAxios } from "../../Api-data/useAxios";
 import { addToCart } from "../../Utilities/add-to-cart";
 import { useAuth } from "../../Context/auth-context";
-
+import { useWishlist } from "../../Context/wishlist-context";
+import { addToWishlist } from "../../Utilities/add-to-wishlist";
+import { removeFromWishlist } from "../../Utilities/remove-from-wishlist";
 export const ProductDetails = () => {
   const [productDetails, setProductDetails] = useState([]);
   const { id } = useParams();
-  const { dispatch } = useCart();
+  const { state, dispatch } = useCart();
+  const { wishlistState, wishlistDispatch } = useWishlist();
+  const { wishlistItem } = wishlistState;
+  const { cartItem } = state;
   const { auth } = useAuth();
   const navigate = useNavigate();
   const { loader, setLoader } = useAxios();
@@ -28,11 +34,41 @@ export const ProductDetails = () => {
     setProductDetails(response.data.product);
   };
 
+  const wishlistHandler = (product) => {
+    if (wishlistItem.find((item) => item._id === product._id)) {
+      removeFromWishlist(product, wishlistDispatch);
+    } else if (auth) {
+      addToWishlist(product, wishlistDispatch);
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <>
       <Header />
       <div className="products-details-container">
-        <img src={productDetails.image} alt={productDetails.title} />
+        <div className="wishlist-icon-container">
+          <img src={productDetails.image} alt={productDetails.title} />
+          {wishlistItem.find((item) => item._id === productDetails._id) ? (
+            <span
+              id="wishlist-icon"
+              className="material-icons icon wishlisted"
+              onClick={() => wishlistHandler(productDetails)}
+            >
+              favorite
+            </span>
+          ) : (
+            <span
+              id="wishlist-icon"
+              className="material-icons icon"
+              onClick={() => wishlistHandler(productDetails)}
+            >
+              favorite_border
+            </span>
+          )}
+        </div>
+
         <div className="product-content ml-1">
           <h2 className="mb-half h2">{productDetails.title}</h2>
           <h4 className="mb-half mt-half">₹{productDetails.price}</h4>
@@ -55,13 +91,24 @@ export const ProductDetails = () => {
           <p className="mb-half">
             Rating: <span className="grey-text">{productDetails.rating}⭐</span>
           </p>
-          <button
-            onClick={() =>
-              auth ? addToCart(productDetails, dispatch) : navigate("/login")
-            }
-          >
-            Add to Cart
-          </button>
+
+          {cartItem.find((item) => item._id === productDetails._id) ? (
+            <button
+              className="btn btn-primary"
+              onClick={() => navigate("/cart")}
+            >
+              Go To Cart
+            </button>
+          ) : (
+            <button
+              className="btn btn-primary"
+              onClick={() =>
+                auth ? addToCart(productDetails, dispatch) : navigate("/login")
+              }
+            >
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </>

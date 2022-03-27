@@ -24,9 +24,20 @@ export const Signup = () => {
     setUser({ ...user, [name]: value });
   };
 
+  const [errorMsg,setErrorMsg]=useState("")
+  const [color,setColor]=useState("")
+
   const signupHandler = async () => {
-    if (!checked) {
-      alert("check and sign up");
+    if (
+      !user.firstName &&
+      !user.lastName &&
+      !user.email &&
+      !user.password &&
+      !checked
+    ) {
+      setErrorMsg("Please enter valid Email ID & Password");
+      setColor("red");
+      return;
     }
     try {
       const response = await axios.post("/api/auth/signup", {
@@ -39,7 +50,7 @@ export const Signup = () => {
       localStorage.setItem("token", response.data.encodedToken);
 
       setAuth(true);
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.log(error);
     }
@@ -76,6 +87,7 @@ export const Signup = () => {
               placeholder="Enter Email"
             />
           </div>
+          <small style={{color:color}}>{errorMsg}</small>
           <div className="input-group">
             <label className="form-label">Last Name</label>
             <input
@@ -87,6 +99,7 @@ export const Signup = () => {
               placeholder="Enter Email"
             />
           </div>
+          <small style={{color:color}}>{errorMsg}</small>
           <div className="input-group">
             <label className="form-label">Email address</label>
             <input
@@ -98,6 +111,7 @@ export const Signup = () => {
               placeholder="Enter Email"
             />
           </div>
+          <small style={{color:color}}>{errorMsg}</small>
           <div className="input-group">
             <label className="form-label">Password</label>
 
@@ -107,6 +121,7 @@ export const Signup = () => {
             >
               {icon}
             </span>
+
             <input
               className="form-control"
               type={showPassword}
@@ -116,7 +131,7 @@ export const Signup = () => {
               placeholder="Enter Password"
             />
           </div>
-
+          <small style={{color:color}}>{errorMsg}</small>
           <div className="checkbox-parent">
             <input onChange={checkboxHandler} type="checkbox" />
             <label>I accept all Terms & Conditions</label>

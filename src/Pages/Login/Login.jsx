@@ -6,7 +6,7 @@ import { useAuth } from "../../Context/auth-context";
 import axios from "axios";
 import { useAxios } from "../../Api-data/useAxios";
 export const Login = () => {
-  const { auth, setAuth } = useAuth();
+  const {  setAuth } = useAuth();
 
   const {loader,setLoader}=useAxios()
   const navigate = useNavigate();
@@ -14,6 +14,8 @@ export const Login = () => {
     email: "",
     password: "",
   });
+  const [errorMsg,setErrorMsg]=useState("")
+  const [color,setColor]=useState("")
   const [showPassword, setShowPassword] = useState("password");
   const [icon,setIcon]=useState("visibility_off")
   const handlerInput = (e) => {
@@ -22,12 +24,18 @@ export const Login = () => {
   };
 
   const handleUserLogin = async () => {
+    if(!user.email && !user.password && !checked){
+      setErrorMsg("Please enter valid Email ID & Password")
+      setColor("red")
+      return
+    }
     try {
       setLoader(true)
       const { data } = await axios.post("api/auth/login", {
         email: user.email,
         password: user.password,
       });
+      console.log("loader")
       setLoader(false)
       localStorage.setItem("token", data.encodedToken);
       setAuth(true)
@@ -64,12 +72,13 @@ export const Login = () => {
               placeholder="Enter Email"
             />
           </div>
+            <small style={{color:color}}>{errorMsg}</small>
           <div className="input-group">
             <label className="form-label">Password </label>
             <span
               onClick={passwordHandler}
               className="material-icons visibility"
-            >
+              >
               {icon}
             </span>
             <input
@@ -80,11 +89,9 @@ export const Login = () => {
               className="form-control"
               placeholder="Enter Password"
             />
-            <div className="checkbox-parent">
-              <input id="show-pass" type="checkbox" />
-              <label htmlFor="show-pass">Show password</label>
-            </div>
+          
           </div>
+          <small style={{color:color}}>{errorMsg}</small>
           <div className="checkbox-parent">
             <input type="checkbox" />
             <label>Remember me</label>
