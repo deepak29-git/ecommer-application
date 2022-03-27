@@ -24,7 +24,8 @@ export const Login = () => {
   };
 
   const handleUserLogin = async () => {
-    if(!user.email && !user.password && !checked){
+    console.log("before if",user.email,user.password)
+    if(!user.email && !user.password){
       setErrorMsg("Please enter valid Email ID & Password")
       setColor("red")
       return
@@ -35,7 +36,7 @@ export const Login = () => {
         email: user.email,
         password: user.password,
       });
-      console.log("loader")
+
       setLoader(false)
       localStorage.setItem("token", data.encodedToken);
       setAuth(true)
