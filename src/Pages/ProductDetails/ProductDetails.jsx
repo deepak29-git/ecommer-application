@@ -1,19 +1,22 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useCart } from "../../Context/cart-context";
 import "../ProductDetails/ProductDetails.css";
 import { Header } from "../../components/Header/Header";
 import "../Product/Products.css";
 import { useAxios } from "../../Api-data/useAxios";
 import { addToCart } from "../../Utilities/add-to-cart";
+import { useAuth } from "../../Context/auth-context";
 
 export const ProductDetails = () => {
   const [productDetails, setProductDetails] = useState([]);
   const { id } = useParams();
   const { dispatch } = useCart();
-  const {loader,setLoader}=useAxios()
-  
+  const { auth } = useAuth();
+  const navigate = useNavigate();
+  const { loader, setLoader } = useAxios();
+
   useEffect(() => {
     getApi();
   }, []);
@@ -53,8 +56,8 @@ export const ProductDetails = () => {
             Rating: <span className="grey-text">{productDetails.rating}⭐</span>
           </p>
           <button
-            onClick={() =>{addToCart(productDetails)
-              dispatch({ type: "ADD_TO_CART", payload: productDetails })}
+            onClick={() =>
+              auth ? addToCart(productDetails, dispatch) : navigate("/login")
             }
           >
             Add to Cart

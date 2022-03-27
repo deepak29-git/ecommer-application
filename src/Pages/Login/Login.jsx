@@ -1,24 +1,52 @@
 import "../Login/Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
 import { useState } from "react";
 import { useAuth } from "../../Context/auth-context";
+import axios from "axios";
+import { useAxios } from "../../Api-data/useAxios";
 export const Login = () => {
-  const {loginUser,authState} =useAuth()
-  const {loading}=authState;
+  const { auth, setAuth } = useAuth();
+
+  const {loader,setLoader}=useAxios()
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState("password");
+  const [icon,setIcon]=useState("visibility_off")
   const handlerInput = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
-
   };
 
   const handleUserLogin = async () => {
-    loginUser(user)
+    try {
+      setLoader(true)
+      const { data } = await axios.post("api/auth/login", {
+        email: user.email,
+        password: user.password,
+      });
+      setLoader(false)
+      localStorage.setItem("token", data.encodedToken);
+      setAuth(true)
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  const passwordHandler = () => {
+    if (showPassword === "password") {
+      setShowPassword("text");
+      setIcon("visibility")
+    } else {
+      setShowPassword("password");
+      setIcon("visibility_off")
+    }
+  };
+
   return (
     <>
       <Header />
@@ -38,8 +66,14 @@ export const Login = () => {
           </div>
           <div className="input-group">
             <label className="form-label">Password </label>
+            <span
+              onClick={passwordHandler}
+              className="material-icons visibility"
+            >
+              {icon}
+            </span>
             <input
-              type="password"
+              type={showPassword}
               name="password"
               value={user.password}
               onChange={handlerInput}
@@ -67,7 +101,7 @@ export const Login = () => {
               onClick={handleUserLogin}
               className="my-2 login-btn"
             >
-              {loading ? "Loading....": "Login" }
+              {loader ? "Loading...." : "Login"}
             </button>
           </div>
           <div className="center">

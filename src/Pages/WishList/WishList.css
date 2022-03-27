@@ -1,0 +1,14 @@
+.wishlist-card{
+  height: 380px;
+  width: 240px;
+  border: 1px solid var(--grey-color); 
+  border-radius: 0; 
+  
+}
+
+
+.wishlist-parent{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+}
+
