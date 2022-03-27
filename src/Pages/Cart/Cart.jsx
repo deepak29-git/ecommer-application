@@ -10,11 +10,16 @@ import { addToWishlist } from "../../Utilities/add-to-wishlist";
 export const Cart = () => {
   const { state, dispatch } = useCart();
   const { cartItem } = state;
-  const { wishlistDispatch } = useWishlist();
+  const {wishlistState, wishlistDispatch } = useWishlist();
+  const {wishlistItem}=wishlistState
 
   const moveToWishlist = (product) => {
-    addToWishlist(product, wishlistDispatch);
-    removeFromCart(product, dispatch);
+    if(wishlistItem.find(item=>item._id===product._id)){
+      removeFromCart(product, dispatch);
+    }else{
+      addToWishlist(product, wishlistDispatch);
+      removeFromCart(product, dispatch);
+    }
   };
 
   let original_price = 0;
