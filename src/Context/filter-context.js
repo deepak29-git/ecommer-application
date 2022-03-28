@@ -8,7 +8,6 @@ const FilterProvider = ({ children }) => {
     search:null,
     sorting: null,
     priceRange: 5000,
-    category: null,
     homeCategory:{},
     ratings: null,
     brand: {
@@ -25,6 +24,14 @@ const FilterProvider = ({ children }) => {
     includeOutOfStock: false,
     fastDelivery: false,
     clearAll: false,
+
+    category: {
+      men:false,
+      women:false,
+      kids:false,
+      homeAndliving:false,
+      beauty:false
+    },
   });
 
   return (

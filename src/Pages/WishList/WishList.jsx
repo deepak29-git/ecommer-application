@@ -44,7 +44,7 @@ export const WishList = () => {
               product;
 
             return (
-              <main key={_id} className=" wishlist-container mt-2 plr-1">
+              <main key={_id} className=" wishlist-container mt-4 plr-1">
                 <div className="ecom-card wishlist-card">
                   <div className="product-image">
                     <img className="image" src={image} alt={title} />

@@ -5,28 +5,23 @@ import { useEffect, useState } from "react";
 export const Sidebar = () => {
   const { state, dispatch } = useFilter();
 
-  const [position, setPosition] = useState("-100");
-
-  useEffect(() => {
-    setPosition("100");
-  }, [state]);
+  const [display, setDisplay] = useState("");
 
   const hamburgerHandler = () => {
-    if (position === "-100") {
-      setPosition("100");
-    } else setPosition("-100");
+    if (display === "none") setDisplay("block");
+    else setDisplay("none");
   };
   return (
     <div>
-      {position === "-100"&&<span
+      <span
         onClick={hamburgerHandler}
         id="ecom-hamburger"
         className="material-icons"
       >
         menu
-      </span>}
-      {position === "100" && (
-        <aside style={{ position: position }} className="ecom-sidebar">
+      </span>
+      {
+        <aside style={{ display: display }} className="ecom-sidebar">
           <div className="space-between">
             <h3>Filters</h3>
             <button
@@ -101,8 +96,8 @@ export const Sidebar = () => {
               <label>
                 <input
                   className="mr-half mb-half"
-                  type="radio"
-                  checked={state.category === "men"}
+                  type="checkbox"
+                  checked={state.category.men}
                   name="category"
                   onChange={() => dispatch({ type: "MEN" })}
                 />
@@ -113,8 +108,8 @@ export const Sidebar = () => {
               <label>
                 <input
                   className="mr-half mb-half"
-                  type="radio"
-                  checked={state.category === "women"}
+                  type="checkbox"
+                  checked={state.category.women}
                   name="category"
                   onChange={() => dispatch({ type: "WOMEN" })}
                 />
@@ -125,8 +120,8 @@ export const Sidebar = () => {
               <label>
                 <input
                   className="mr-half mb-half"
-                  type="radio"
-                  checked={state.category === "kids"}
+                  type="checkbox"
+                  checked={state.category.kids}
                   name="category"
                   onChange={() => dispatch({ type: "KIDS" })}
                 />
@@ -137,8 +132,8 @@ export const Sidebar = () => {
               <label>
                 <input
                   className="mr-half mb-half"
-                  type="radio"
-                  checked={state.category === "home&living"}
+                  type="checkbox"
+                  checked={state.category.homeAndliving}
                   name="category"
                   onChange={() => dispatch({ type: "HOME & LIVING" })}
                 />
@@ -149,9 +144,9 @@ export const Sidebar = () => {
               <label>
                 <input
                   className="mr-half mb-half"
-                  type="radio"
+                  type="checkbox"
                   name="category"
-                  checked={state.category === "beauty"}
+                  checked={state.category.beauty}
                   onChange={() => dispatch({ type: "BEAUTY" })}
                 />
                 Beauty
@@ -173,7 +168,7 @@ export const Sidebar = () => {
             <div>
               <label>
                 <input
-                  className="mr-half"
+                  className="mr-half mb-half"
                   type="radio"
                   checked={state.ratings === 3}
                   name="rating"
@@ -182,6 +177,34 @@ export const Sidebar = () => {
                   }
                 />
                 3 Stars & above
+              </label>
+            </div>
+            <div>
+              <label>
+                <input
+                  className="mr-half mb-half"
+                  type="radio"
+                  checked={state.ratings === 2}
+                  name="rating"
+                  onChange={() =>
+                    dispatch({ type: "two & above", rating: 2 })
+                  }
+                />
+                2 Stars & above
+              </label>
+            </div>
+            <div>
+              <label>
+                <input
+                  className="mr-half mb-half"
+                  type="radio"
+                  checked={state.ratings === 1}
+                  name="rating"
+                  onChange={() =>
+                    dispatch({ type: "one & above", rating: 1 })
+                  }
+                />
+                1 Stars & above
               </label>
             </div>
             <h3 className="mt-1 mb-1">Brand</h3>
@@ -295,7 +318,7 @@ export const Sidebar = () => {
             </div>
           </div>
         </aside>
-      )}
+      }
     </div>
   );
 };

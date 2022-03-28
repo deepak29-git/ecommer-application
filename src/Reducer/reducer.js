@@ -1,7 +1,7 @@
 export const reducer = (state, action) => {
   switch (action.type) {
     case "SEARCH":
-      return {...state,search:action.value}
+      return { ...state, search: action.value };
     case "HIGH_TO_LOW":
       return { ...state, sorting: "HIGH_TO_LOW" };
     case "LOW_TO_HIGH":
@@ -9,15 +9,37 @@ export const reducer = (state, action) => {
     case "PRICE_RANGE":
       return { ...state, priceRange: action.value };
     case "MEN":
-      return { ...state, category: "men" };
+      return {
+        ...state,
+        category: { ...state.category, men: !state.category.men }
+      };
     case "WOMEN":
-      return { ...state, category: "women" };
+      return {
+        ...state,
+        category: { ...state.category, women: !state.category.women }
+      };
     case "KIDS":
-      return { ...state, category: "kids" };
+      return {
+        ...state,
+        category: { ...state.category, kids: !state.category.kids }
+      };
     case "HOME & LIVING":
-      return { ...state, category: "home&living" };
+      return {
+        ...state,
+        category: {
+          ...state.category,
+          homeAndliving: !state.category.homeAndliving
+        }
+      };
     case "BEAUTY":
-      return { ...state, category: "beauty" };
+      return {
+        ...state,
+        category: { ...state.category, beauty: !state.category.beauty },
+      };
+      case "one & above":
+        return { ...state, ratings: action.rating };
+      case "two & above":
+        return { ...state, ratings: action.rating };
     case "three & above":
       return { ...state, ratings: action.rating };
     case "four & above":
@@ -70,7 +92,13 @@ export const reducer = (state, action) => {
         ...state,
         sorting: null,
         priceRange: 5000,
-        category: null,
+        category: {
+          men:false,
+          women:false,
+          kids:false,
+          homeAndliving:false,
+          beauty:false
+        },
         ratings: null,
         brand: {
           roadster: false,

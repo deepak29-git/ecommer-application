@@ -27,6 +27,7 @@ export const Products = () => {
     clearAll
   } = state;
   
+  console.log(category,"from product")
   const { loader, data } = useAxios();
   
   const sortedByPrice = getSortedProducts(data, sorting);

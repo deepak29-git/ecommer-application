@@ -1,12 +1,15 @@
 
 .five-item > * {
-    background-color: var(--light-grey);
-    padding: 1.5rem;
+    /* background-color: var(--light-grey);
+    padding: 1.5rem; */
     display: grid;
     align-items: center;
     border-radius: 10px;
     justify-content: center;
     min-height: 200px;
+  }
+  .category-img{
+    height: 100px;
   }
   
   .five-item {
@@ -16,6 +19,9 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 
+  .category-container{
+    margin-top: 6rem;
+  }
   .scale {
     transition: all 0.5s ease-in-out;
     cursor: pointer;
@@ -23,3 +29,15 @@
   .scale:hover {
     transform: scale(1.1);
   }
+
+@media only screen and (max-width:692px){
+  .category-container{
+    margin-top: 10rem;
+  }
+}
+
+@media only screen and (max-width:465px){
+  .category-container{
+    margin-top: 14rem;
+  }
+}

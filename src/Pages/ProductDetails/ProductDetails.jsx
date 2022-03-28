@@ -48,7 +48,7 @@ export const ProductDetails = () => {
     <>
       <Header />
       <div className="products-details-container">
-        <div className="wishlist-icon-container">
+        <div className="wishlist-icon-container mt-4">
           <img src={productDetails.image} alt={productDetails.title} />
           {wishlistItem.find((item) => item._id === productDetails._id) ? (
             <span
@@ -70,7 +70,7 @@ export const ProductDetails = () => {
         </div>
 
         <div className="product-content ml-1">
-          <h2 className="mb-half h2">{productDetails.title}</h2>
+          <h2 className="mb-half h2 mt-3">{productDetails.title}</h2>
           <h4 className="mb-half mt-half">₹{productDetails.price}</h4>
           <hr />
           <p className="fs-4 mb-half mt-half">
@@ -94,14 +94,14 @@ export const ProductDetails = () => {
 
           {cartItem.find((item) => item._id === productDetails._id) ? (
             <button
-              className="btn btn-primary"
+              className="btn add-to-cart btn-primary"
               onClick={() => navigate("/cart")}
             >
               Go To Cart
             </button>
           ) : (
             <button
-              className="btn btn-primary"
+              className="btn add-to-cart btn-primary"
               onClick={() =>
                 auth ? addToCart(productDetails, dispatch) : navigate("/login")
               }

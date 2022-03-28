@@ -1,6 +1,11 @@
 .ecom-header {
   border-bottom: 1px solid var(--grey-color);
-  padding-bottom: 1rem;
+  position: fixed;
+  padding: 1rem 2rem;
+  margin-top: 0;
+  z-index: 1;
+  background-color: var(--accent-color);
+  top: 0;
 }
 
 .ecom-input {
@@ -8,13 +13,13 @@
   height: 40px;
 }
 
-
 .standard-nav {
   display: flex;
   gap: 2rem;
   align-items: center;
   width: 100%;
-  flex-wrap: wrap ;
+  flex-wrap: wrap;
+  
 }
 
 .input-parent {
@@ -25,6 +30,7 @@
   margin-left: auto;
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 #ecom-search {
@@ -42,6 +48,7 @@
   color: var(--primary-color);
 }
 
-.login-btn{
+.login-btn {
   width: 200px;
 }
+

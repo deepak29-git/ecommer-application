@@ -2,12 +2,14 @@
 
 .cart-main{
   display: grid;
-  grid-template-columns: 1fr 1fr
+  grid-template-columns: 1fr 1fr;
+  margin-top: 3rem;
 }
 
 .cart-container{
   grid-column-start: 1;
   grid-column-end: 2;
+  
 }
 
 .price-detail-main{
@@ -75,7 +77,7 @@ input[type="number"] {
 
 @media only screen and (max-width: 31.25em) {
   .horizontal {
-    margin-bottom: 6rem;
+    margin-bottom: 15rem;
   }
   .btn-group {
     display: flex;
@@ -83,5 +85,13 @@ input[type="number"] {
   }
   .cart-btn {
     padding: 0.5rem 1rem;
+  }
+  .cart-main{
+    grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+    margin-top: 12rem;
+  }
+  .price-detail-main{
+    grid-column-start: 1;
+    grid-column-end: 2;
   }
 }

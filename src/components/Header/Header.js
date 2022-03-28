@@ -1,6 +1,6 @@
 import { useFilter } from "../../Context/filter-context";
 import "./Header.css";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, } from "react-router-dom";
 import { useCart } from "../../Context/cart-context";
 import { useWishlist } from "../../Context/wishlist-context";
 import { useAuth } from "../../Context/auth-context";
@@ -25,17 +25,14 @@ export const Header = () => {
     cursor: "pointer",
   };
   return (
-    <header className="ecom-header mt-1 plr-2 mb-1">
+    <header className="ecom-header plr-2">
       <nav className="standard-nav">
         <Link to="/" className="ecom-title black">
           <h2>
             Shop<span className="ui-text">io</span>
           </h2>
         </Link>
-        <NavLink className="navlink" to="/">
-          <div>Home</div>
-        </NavLink>
-        <NavLink className="navlink" to="/products">
+        <NavLink  className="navlink" to="/products">
           <div>Products</div>
         </NavLink>
         <div className="left-side">

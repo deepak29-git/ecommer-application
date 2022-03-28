@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
-    _id: uuid(),
+    _id: "b1",
     brand: "Roadster",
     categoryName: "Men",
     title: "Pure Cotton T-shirt",
@@ -23,7 +23,7 @@ export const products = [
     rating: 5,
   },
   {
-    _id: uuid(),
+    _id: "b2",
     brand: "Nautica",
     categoryName: "Men",
     title: "Solid Polo Collar T-shirt",
@@ -39,7 +39,7 @@ export const products = [
     rating: 5,
   },
   {
-    _id: uuid(),
+    _id: "b3",
     brand: "Puma",
     categoryName: "Women",
     title: "Metallic Nights Biker Jacket",
@@ -59,7 +59,7 @@ export const products = [
     rating: 4,
   },
   {
-    _id: uuid(),
+    _id: "b4",
     brand: "ADIDAS",
     categoryName: "Women",
     title: "Training or Gym Jacket",
@@ -77,7 +77,7 @@ export const products = [
   },
 
   {
-    _id: uuid(),
+    _id: "b5",
     brand: "H&M",
     categoryName: "Kids",
     title: "Girls & White Dress",
@@ -94,7 +94,7 @@ export const products = [
     rating: 3,
   },
   {
-    _id: uuid(),
+    _id: "b6",
     brand: "Colorbar",
     categoryName: "Beauty",
     title: "Flawless Finish Primer",
@@ -110,7 +110,7 @@ export const products = [
     rating: 5,
   },
   {
-    _id: uuid(),
+    _id: "b7",
     brand: "KLOTTHE",
     categoryName: "Home & Living",
     title: "210 TC Pillow Covers",
@@ -126,7 +126,7 @@ export const products = [
     rating: 1,
   },
   {
-    _id: uuid(),
+    _id: "b8",
     brand: "TALES & STORIES",
     categoryName: "Kids",
     title: "Boys Slim Fit Jeans",
@@ -143,7 +143,7 @@ export const products = [
     rating: 3,
   },
   {
-    _id: uuid(),
+    _id: "b9",
     brand: "Dove",
     categoryName: "Beauty",
     title: "Daily Shine Shampoo",
@@ -156,6 +156,6 @@ export const products = [
     discount:26,
     delivery_charges:50,
     fastDelivery: true,
-    rating: 4,
+    rating: 0,
   },
 ];

@@ -60,20 +60,6 @@ export const ProductDisplay = ({ product }) => {
           <div>5 Days Minimum</div>
         )}
         <p>Rating:{product.rating}⭐</p>
-        {cartItem.find((cartItem) => cartItem._id === product._id) ? (
-          <button className="btn btn-primary" onClick={() => navigate("/cart")}>
-            Go TO CART
-          </button>
-        ) : (
-          <button
-            className="btn btn-primary"
-            onClick={() =>
-              auth ? addToCart(product, dispatch) : navigate("/login")
-            }
-          >
-            ADD TO CART
-          </button>
-        )}
       </main>
     </>
   );

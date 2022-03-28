@@ -1,35 +1,57 @@
-
 .grid-container {
   display: grid;
   height: 100vh;
 }
 
-.wishlisted{
-color: red;
+.wishlisted {
+  color: red;
 }
 .ecom-main {
-  grid-column: 2 / 10;
+  grid-column: 5 / 12;
   display: grid;
+  margin-top: 4rem;
   padding: 0 2rem;
   height: 100vh;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
-.ecom-card{
+.ecom-card {
   width: 300px;
-  border-radius:20px;
+  border-radius: 20px;
   position: relative;
 }
-#wishlist-icon{
+#wishlist-icon {
   position: absolute;
   top: 0;
   right: 0;
   cursor: pointer;
 }
 
-
-.loading-gif{
+.loading-gif {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (max-width: 1288px) {
+  .ecom-main {
+    grid-column: 7 / 12;
+  }
+}
+
+@media only screen and (max-width: 1030px) {
+  .ecom-main {
+    grid-column: 9 / 12;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .ecom-main {
+    margin-top: 8rem;
+  }
+}
+
+@media only screen and (max-width: 490px) {
+  .ecom-main {
+    margin-top: 12rem;
+  }
 }

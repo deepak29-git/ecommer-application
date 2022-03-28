@@ -14,10 +14,18 @@
 #wishlist-icon{
     position: absolute;
     top: 5px;
-    cursor: pointer;
+    cursor: pointer;    
   }
 .product-content{
     width: 31.25rem;
     line-height: 1.5rem;
 }
+.add-to-cart{
+    width: 300px;
+}
 
+@media only screen and (max-width:532px) {
+    .wishlist-icon-container{
+        margin-top: 10rem;
+    }
+}
