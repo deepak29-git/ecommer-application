@@ -8,8 +8,11 @@ export const Sidebar = () => {
   const [display, setDisplay] = useState("");
 
   const hamburgerHandler = () => {
-    if (display === "none") setDisplay("block");
-    else setDisplay("none");
+    if (display === "block") {
+      setDisplay("none");
+    } else {
+      setDisplay("block");
+    }
   };
   return (
     <div>
@@ -97,7 +100,7 @@ export const Sidebar = () => {
                 <input
                   className="mr-half mb-half"
                   type="checkbox"
-                  checked={state.category.men}
+                  // checked={state.category.men}
                   name="category"
                   onChange={() => dispatch({ type: "MEN" })}
                 />
@@ -109,7 +112,7 @@ export const Sidebar = () => {
                 <input
                   className="mr-half mb-half"
                   type="checkbox"
-                  checked={state.category.women}
+                  // checked={state.category.women}
                   name="category"
                   onChange={() => dispatch({ type: "WOMEN" })}
                 />
@@ -121,7 +124,7 @@ export const Sidebar = () => {
                 <input
                   className="mr-half mb-half"
                   type="checkbox"
-                  checked={state.category.kids}
+                  // checked={state.category.kids}
                   name="category"
                   onChange={() => dispatch({ type: "KIDS" })}
                 />
@@ -133,7 +136,7 @@ export const Sidebar = () => {
                 <input
                   className="mr-half mb-half"
                   type="checkbox"
-                  checked={state.category.homeAndliving}
+                  // checked={state.category.homeAndliving}
                   name="category"
                   onChange={() => dispatch({ type: "HOME & LIVING" })}
                 />
@@ -146,7 +149,7 @@ export const Sidebar = () => {
                   className="mr-half mb-half"
                   type="checkbox"
                   name="category"
-                  checked={state.category.beauty}
+                  // checked={state.category.beauty}
                   onChange={() => dispatch({ type: "BEAUTY" })}
                 />
                 Beauty
@@ -186,9 +189,7 @@ export const Sidebar = () => {
                   type="radio"
                   checked={state.ratings === 2}
                   name="rating"
-                  onChange={() =>
-                    dispatch({ type: "two & above", rating: 2 })
-                  }
+                  onChange={() => dispatch({ type: "two & above", rating: 2 })}
                 />
                 2 Stars & above
               </label>
@@ -200,9 +201,7 @@ export const Sidebar = () => {
                   type="radio"
                   checked={state.ratings === 1}
                   name="rating"
-                  onChange={() =>
-                    dispatch({ type: "one & above", rating: 1 })
-                  }
+                  onChange={() => dispatch({ type: "one & above", rating: 1 })}
                 />
                 1 Stars & above
               </label>

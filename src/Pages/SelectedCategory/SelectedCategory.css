@@ -1,0 +1,9 @@
+.grid-container-category{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+}
+
+.category-card{
+    height: 530px;
+    margin-top: 6rem;
+}

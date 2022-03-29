@@ -30,10 +30,13 @@ export const getAllCategoriesHandler = function () {
  * */
 
 export const getCategoryHandler = function (schema, request) {
-  const categoryId = request.params.categoryId;
+  const categoryName = request.params.categoryId;
+
+  // const searchQuery=new RegExp(categoryName,"i")
   try {
-    const category = schema.categories.findBy({ _id: categoryId });
-    return new Response(200, {}, { category });
+    const category = this.db.products;
+    const products=category.filter(men=>men.categoryName==categoryName)
+    return new Response(200, {}, { products });
   } catch (error) {
     new Response(
       500,

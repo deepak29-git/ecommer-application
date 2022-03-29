@@ -15,6 +15,7 @@ import { removeFromWishlist } from "../../Utilities/remove-from-wishlist";
 export const ProductDetails = () => {
   const [productDetails, setProductDetails] = useState([]);
   const { id } = useParams();
+  console.log(id,"product-details")
   const { state, dispatch } = useCart();
   const { wishlistState, wishlistDispatch } = useWishlist();
   const { wishlistItem } = wishlistState;
