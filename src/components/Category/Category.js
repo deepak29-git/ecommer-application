@@ -1,7 +1,6 @@
 import "../Category/Category.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-// import { getCategory } from "../../Utilities/category";
 import axios from "axios";
 import { useAxios } from "../../Api-data/useAxios";
 
@@ -21,7 +20,7 @@ export const Category = () => {
 
   return (
     <>
-      <p className="center-text semibold fs-2 mt-2 mb-2 category-container">
+      <p className="center-text semibold fs-2 mb-2 category-container">
         Featured Categories
       </p>
       {loader && <h1 className="center-text">Loading...</h1>}

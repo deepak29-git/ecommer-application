@@ -43,7 +43,7 @@ export const Header = () => {
         >
           <input
             className="ecom-input standard-input"
-            type="text"
+            type="search"
             placeholder="Search for products, brands and more"
           />
           <span id="ecom-search" className="material-icons">

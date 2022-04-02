@@ -7,7 +7,6 @@
   color: red;
 }
 .ecom-main {
-  /* grid-column: 5 / 12; */
   grid-column: 3 / 6;
   display: grid;
   margin-top: 4rem;
@@ -17,14 +16,14 @@
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 .ecom-card {
-  width: 300px;
   border-radius: 20px;
   position: relative;
+
 }
 #wishlist-icon {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 25px;
   cursor: pointer;
 }
 
@@ -34,6 +33,9 @@
   align-items: center;
 }
 
+.product-page-btn{
+  width: 14rem;
+}
 @media only screen and (max-width: 1288px) {
   .ecom-main {
     grid-column: 4 / 6  ;

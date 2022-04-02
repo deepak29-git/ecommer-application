@@ -34,7 +34,7 @@ export const categories = [
   {
     _id: uuid(),
     categoryName: "Beauty",
-    categoryImage:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/makeup-supplies-amidst-shiny-glitter-royalty-free-image-1640037507.jpg?crop=0.66635xw:1xh;center,top&resize=640:*",
+    categoryImage:"https://static.toiimg.com/photo/msid-71335764/71335764.jpg?1609322",
     description:"this is about men"
   }
  
