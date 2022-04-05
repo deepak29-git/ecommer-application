@@ -7,7 +7,7 @@ Shopio is an fully functional and responsive Ecommerce application which provide
 ![Screenshot (134)](https://user-images.githubusercontent.com/88363801/161853877-12c6052b-f538-470e-8e27-1cec21b20147.png)
 
 
-## Whats's included?
+## What's included?
 - Home Page
 - Product Page
 - Wishlist Page
@@ -15,7 +15,7 @@ Shopio is an fully functional and responsive Ecommerce application which provide
 - Login Page
 - Signup Page
 
-## Whats's Features/Functionalities included?
+## What's Features/Functionalities included?
 
  - Authentication
       - Users can sign-up for your app
