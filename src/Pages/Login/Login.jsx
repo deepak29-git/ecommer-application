@@ -6,53 +6,69 @@ import { useAuth } from "../../Context/auth-context";
 import axios from "axios";
 import { useAxios } from "../../Api-data/useAxios";
 export const Login = () => {
-  const {  setAuth } = useAuth();
+  const { setAuth } = useAuth();
 
-  const {loader,setLoader}=useAxios()
+  const { loader, setLoader } = useAxios();
   const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
-  const [errorMsg,setErrorMsg]=useState("")
-  const [color,setColor]=useState("")
+  const [errorMsg, setErrorMsg] = useState(false);
+  const [color, setColor] = useState("");
   const [showPassword, setShowPassword] = useState("password");
-  const [icon,setIcon]=useState("visibility_off")
+  const [icon, setIcon] = useState("visibility_off");
   const handlerInput = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
+    setErrorMsg(false);
   };
 
   const handleUserLogin = async () => {
-    console.log("before if",user.email,user.password)
-    if(!user.email && !user.password){
-      setErrorMsg("Please enter valid Email ID & Password")
-      setColor("red")
-      return
+    console.log("before if", user.email, user.password);
+    if (!user.email && !user.password) {
+      setErrorMsg(true);
+      setColor("red");
+      return;
     }
     try {
-      setLoader(true)
+      setLoader(true);
       const { data } = await axios.post("api/auth/login", {
         email: user.email,
         password: user.password,
       });
 
-      setLoader(false)
+      setLoader(false);
       localStorage.setItem("token", data.encodedToken);
-      setAuth(true)
+      setAuth(true);
       navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
 
+  const testLogin = async () => {
+    try {
+      const { data } = await axios.post("api/auth/login", {
+        email: "adarshbalak@gmail.com",
+        password: "adarshbalak",
+      });
+
+      localStorage.setItem("token", data.encodedToken);
+      setAuth(true);
+      navigate("/");
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   const passwordHandler = () => {
     if (showPassword === "password") {
       setShowPassword("text");
-      setIcon("visibility")
+      setIcon("visibility");
     } else {
       setShowPassword("password");
-      setIcon("visibility_off")
+      setIcon("visibility_off");
     }
   };
 
@@ -73,13 +89,15 @@ export const Login = () => {
               placeholder="Enter Email"
             />
           </div>
-            <small style={{color:color}}>{errorMsg}</small>
+          <small style={{ color: color }}>
+            {errorMsg && "Enter valid email"}
+          </small>
           <div className="input-group">
             <label className="form-label">Password </label>
             <span
               onClick={passwordHandler}
               className="material-icons visibility"
-              >
+            >
               {icon}
             </span>
             <input
@@ -90,9 +108,10 @@ export const Login = () => {
               className="form-control"
               placeholder="Enter Password"
             />
-          
           </div>
-          <small style={{color:color}}>{errorMsg}</small>
+          <small style={{ color: color }}>
+            {errorMsg && "Enter valid password"}
+          </small>
           <div className="checkbox-parent">
             <input type="checkbox" />
             <label>Remember me</label>
@@ -101,6 +120,15 @@ export const Login = () => {
                 <span className="forgot-pass">Forgot your Password?</span>
               </a>
             </div>
+          </div>
+          <div className="center">
+            <button
+              type="submit"
+              onClick={testLogin}
+              className="my-2 login-btn"
+            >
+              Test Login
+            </button>
           </div>
 
           <div className="center">

@@ -8,14 +8,12 @@ import { Signup } from "./Pages/Signup/Signup";
 import { Cart } from "./Pages/Cart/Cart";
 import { NotFound } from "./Pages/NotFound/NotFound";
 import { ProductDetails } from "./Pages/ProductDetails/ProductDetails";
-import { SelectedCategory } from "./Pages/SelectedCategory/SelectedCategory";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/category/:categoryName" element={<SelectedCategory />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/wishlist" element={<WishList />} />

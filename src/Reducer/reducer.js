@@ -36,6 +36,9 @@ export const reducer = (state, action) => {
         ...state,
         category: { ...state.category, beauty: !state.category.beauty },
       };
+
+      case "categories":
+        return {...state,categories:action.payload}
       case "one & above":
         return { ...state, ratings: action.rating };
       case "two & above":
@@ -92,13 +95,14 @@ export const reducer = (state, action) => {
         ...state,
         sorting: null,
         priceRange: 5000,
-        category: {
+        category:{
           men:false,
           women:false,
           kids:false,
           homeAndliving:false,
           beauty:false
         },
+    
         ratings: null,
         brand: {
           roadster: false,

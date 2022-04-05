@@ -30,7 +30,7 @@ export const users = [
     _id: uuid(),
     firstName: "deepak",
     lastName: "goyal",
-    email: "deepakgoyal123@gmail.com",
+    email: "deepak123@gmail.com",
     password: bcyrpt.hashSync("deepak", 5),
     createdAt: formatDate(),
     updatedAt: formatDate(),

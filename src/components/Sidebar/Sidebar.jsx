@@ -100,8 +100,8 @@ export const Sidebar = () => {
                 <input
                   className="mr-half mb-half"
                   type="checkbox"
-                  // checked={state.category.men}
                   name="category"
+                  checked={state.category.men}
                   onChange={() => dispatch({ type: "MEN" })}
                 />
                 Men
@@ -112,8 +112,8 @@ export const Sidebar = () => {
                 <input
                   className="mr-half mb-half"
                   type="checkbox"
-                  // checked={state.category.women}
                   name="category"
+                  checked={state.category.women}
                   onChange={() => dispatch({ type: "WOMEN" })}
                 />
                 Women
@@ -124,7 +124,7 @@ export const Sidebar = () => {
                 <input
                   className="mr-half mb-half"
                   type="checkbox"
-                  // checked={state.category.kids}
+                  checked={state.category.kids}
                   name="category"
                   onChange={() => dispatch({ type: "KIDS" })}
                 />
@@ -136,7 +136,7 @@ export const Sidebar = () => {
                 <input
                   className="mr-half mb-half"
                   type="checkbox"
-                  // checked={state.category.homeAndliving}
+                  checked={state.category.homeAndliving}
                   name="category"
                   onChange={() => dispatch({ type: "HOME & LIVING" })}
                 />
@@ -149,7 +149,7 @@ export const Sidebar = () => {
                   className="mr-half mb-half"
                   type="checkbox"
                   name="category"
-                  // checked={state.category.beauty}
+                  checked={state.category.beauty}
                   onChange={() => dispatch({ type: "BEAUTY" })}
                 />
                 Beauty

@@ -32,6 +32,7 @@ const FilterProvider = ({ children }) => {
       homeAndliving:false,
       beauty:false
     },
+
   });
 
   return (

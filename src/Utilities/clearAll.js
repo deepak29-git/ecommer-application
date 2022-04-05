@@ -1,6 +1,6 @@
-export const getClearAll=(data,clearAll)=>{
-    if(clearAll){
-        return data
-    }
-    return data
-}
+export const getClearAll = (data, clearAll) => {
+  if (clearAll) {
+    return data;
+  }
+  return data;
+};

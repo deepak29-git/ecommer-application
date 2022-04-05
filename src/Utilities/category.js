@@ -1,6 +1,4 @@
 export const getCategory = (data, category) => {
-  console.log(category, "from context");
-  console.log(data, "from database");
   let filteredCategory = [];
 
   if (

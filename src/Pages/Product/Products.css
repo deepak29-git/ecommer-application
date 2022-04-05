@@ -1,10 +1,12 @@
+
+
 .grid-container {
   display: grid;
   height: 100vh;
 }
 
 .wishlisted {
-  color: red;
+  color: var(--danger-color);
 }
 .ecom-main {
   grid-column: 3 / 6;
@@ -23,7 +25,8 @@
 #wishlist-icon {
   position: absolute;
   top: 0;
-  right: 25px;
+  right: 0;
+  font-size:1.8rem;
   cursor: pointer;
 }
 
