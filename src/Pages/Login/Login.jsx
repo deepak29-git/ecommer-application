@@ -112,32 +112,19 @@ export const Login = () => {
           <small style={{ color: color }}>
             {errorMsg && "Enter valid password"}
           </small>
-          <div className="checkbox-parent">
-            <input type="checkbox" />
-            <label>Remember me</label>
-            <div className="forgot-pass">
-              <a href="#" className="forget-content">
-                <span className="forgot-pass">Forgot your Password?</span>
-              </a>
-            </div>
-          </div>
-          <div className="center">
-            <button
-              type="submit"
-              onClick={testLogin}
-              className="my-2 login-btn"
-            >
-              Test Login
-            </button>
-          </div>
 
           <div className="center">
             <button
               type="submit"
               onClick={handleUserLogin}
-              className="my-2 login-btn"
+              className="my-1 login-btn"
             >
               {loader ? "Loading...." : "Login"}
+            </button>
+          </div>
+          <div className="center mb-half">
+            <button type="submit" onClick={testLogin} className=" login-btn">
+              Test Login
             </button>
           </div>
           <div className="center">

@@ -13,7 +13,7 @@ export const Signup = () => {
     password: "",
   });
 
-  const [checked, setChecked] = useState(false);
+  
   const [showPassword, setShowPassword] = useState("password");
   const [icon, setIcon] = useState("visibility_off");
   const navigate = useNavigate();
@@ -22,20 +22,20 @@ export const Signup = () => {
   const userInputHandler = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
+    setErrorMsg(false)
   };
 
-  const [errorMsg,setErrorMsg]=useState("")
+  const [errorMsg,setErrorMsg]=useState(false)
   const [color,setColor]=useState("")
 
   const signupHandler = async () => {
     if (
-      !user.firstName &&
-      !user.lastName &&
-      !user.email &&
-      !user.password &&
-      !checked
+      !user.firstName ||
+      !user.lastName ||
+      !user.email ||
+      !user.password 
     ) {
-      setErrorMsg("Please enter valid Email ID & Password");
+      setErrorMsg(true);
       setColor("red");
       return;
     }
@@ -56,9 +56,7 @@ export const Signup = () => {
     }
   };
 
-  const checkboxHandler = (e) => {
-    setChecked(e.target.checked);
-  };
+
 
   const passwordHandler = () => {
     if (showPassword === "text") {
@@ -73,7 +71,7 @@ export const Signup = () => {
   return (
     <>
       <Header />
-      <main className="login">
+      <main className="login signup mt-4">
         <div className="login-container ">
           <h3 className="center-text">Signup</h3>
           <div className="input-group">
@@ -87,7 +85,7 @@ export const Signup = () => {
               placeholder="Enter Email"
             />
           </div>
-          <small style={{color:color}}>{errorMsg}</small>
+          <small style={{color:color}}>{errorMsg&& "Please Enter FirstName"}</small>
           <div className="input-group">
             <label className="form-label">Last Name</label>
             <input
@@ -99,7 +97,7 @@ export const Signup = () => {
               placeholder="Enter Email"
             />
           </div>
-          <small style={{color:color}}>{errorMsg}</small>
+          <small style={{color:color}}>{errorMsg&& "Please Enter LastName"}</small>
           <div className="input-group">
             <label className="form-label">Email address</label>
             <input
@@ -111,7 +109,7 @@ export const Signup = () => {
               placeholder="Enter Email"
             />
           </div>
-          <small style={{color:color}}>{errorMsg}</small>
+          <small style={{color:color}}>{errorMsg&& "Please Enter Email"}</small>
           <div className="input-group">
             <label className="form-label">Password</label>
 
@@ -131,11 +129,8 @@ export const Signup = () => {
               placeholder="Enter Password"
             />
           </div>
-          <small style={{color:color}}>{errorMsg}</small>
-          <div className="checkbox-parent">
-            <input onChange={checkboxHandler} type="checkbox" />
-            <label>I accept all Terms & Conditions</label>
-          </div>
+          <small style={{color:color}}>{errorMsg&& "Please Enter Password"}</small>
+        
 
           <div className="center">
             <button onClick={signupHandler} className="my-2 login-btn">

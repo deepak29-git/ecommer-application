@@ -1,5 +1,17 @@
 .baner {
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
     max-width: 100%;
+    margin-top: 4rem;
   }
   
+  @media only screen and (max-width:700px){
+    .baner {
+      margin-top: 10rem;
+    }
+  }
+
+  @media only screen and (max-width:500px){
+    .baner {
+      margin-top: 15rem;
+    }
+  }

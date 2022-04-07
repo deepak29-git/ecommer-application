@@ -28,25 +28,30 @@ export const Category = () => {
       <p className="center-text semibold fs-2 mb-2 category-container">
         Featured Categories
       </p>
-      {loader && <h1 className="center-text">Loading...</h1>}
+      {loader && (
+            <div className="loading-gif">
+              <img
+                src="https://c.tenor.com/gJLmlIn6EvEAAAAC/loading-gif.gif"
+                alt="loading"
+              />
+            </div>
+          )}
       <div className="five-item">
         {categories.map((category) => {
           const { _id, categoryName, categoryImage } = category;
-          console.log(categoryName.toUpperCase(),"categorypage")
+
           return (
             <div key={_id}>
-                <Link to="/products">
+              <Link to="/products">
                 <img
-                  onClick={() =>
-                    dispatch({ type: categoryName.toUpperCase()  })
-                  }
+                  onClick={() => dispatch({ type: categoryName.toUpperCase() })}
                   className="category-img"
                   src={categoryImage}
                   alt={categoryName}
                 />
                 <p className="fs-3 center-text semibold">{categoryName}</p>
-            </Link>
-              </div>
+              </Link>
+            </div>
           );
         })}
       </div>

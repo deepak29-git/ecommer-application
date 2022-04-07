@@ -26,7 +26,7 @@ export const WishList = () => {
     <>
       <Header />
       <h2 className="center-text my-1">My Wishlist ({wishlistItem.length})</h2>
-      <div className={`${wishlistItem.length>0&&`wishlist-parent`}`}>
+      <div className={`${wishlistItem.length > 0 && `wishlist-parent`}`}>
         {wishlistItem.length === 0 ? (
           <div
             style={{
@@ -63,8 +63,7 @@ export const WishList = () => {
                       <span className="discount">{discount}% off</span>
                     </div>
                     <span
-                      id="wishlist-icon"
-                      className="material-icons icon wishlisted"
+                      className="material-icons icon wishlisted wishlist-cross-icon"
                       onClick={() =>
                         removeFromWishlist(product, wishlistDispatch)
                       }
