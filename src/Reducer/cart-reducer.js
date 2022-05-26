@@ -9,6 +9,8 @@ export const cartReducer = (state, action) => {
       return { ...state, cartItem: action.payload };
     case "INCREMENT_DECREMENT":
       return { ...state, cartItem: action.payload };
+    case "CHECKOUT":
+      return {...state,checkout:action.payload}
     default:
       return state;
   }

@@ -8,8 +8,8 @@ import {
 const AutoContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(localStorage.getItem("token")?true:false);
-  
 
+  
   return (
     <AutoContext.Provider value={{ auth, setAuth }}>
       {children}

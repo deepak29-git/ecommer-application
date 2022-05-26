@@ -14,9 +14,16 @@
   cursor: pointer;
 }
 
+.card-content{
+  padding: 0;
+  margin-left:10px;
+}
 
 .wishlist-parent{
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
 }
 
+.go-to-cart{
+  border-radius: 0;
+}

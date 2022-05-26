@@ -12,10 +12,12 @@ import { getBrand } from "../../Utilities/brand";
 import { getIncludeOutOfStock } from "../../Utilities/includeOutOfStock";
 import { getFastDelivery } from "../../Utilities/fastDelivery";
 import { getClearAll } from "../../Utilities/clearAll";
+import {useToast } from '../../Context/toast-context';
 import { getSearch } from "../../Utilities/search";
-
+import { Toast } from "../../components/Toast/Toast";
 export const Products = () => {
   const { state } = useFilter();
+  const {toastState:{addToCartToast,removeFromCartToast,addToWishlistToast,removeFromWishlistToast}}=useToast();
   const {
     sorting,
     priceRange,
@@ -65,6 +67,10 @@ export const Products = () => {
           {sortedData.map((product) => (
             <ProductDisplay key={product._id} product={product} />
           ))}
+          {addToCartToast&&<Toast text="Item added to cart"/>}
+          {removeFromCartToast&&<Toast text="Item removed from cart"/>}
+          {addToWishlistToast&&<Toast text="Item added to wishlist"/>}
+          {removeFromWishlistToast&&<Toast text="Item removed from wishlist"/>}
         </div>
       </div>
     </div>

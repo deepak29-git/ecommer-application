@@ -4,6 +4,7 @@ import { Link, NavLink, useNavigate, } from "react-router-dom";
 import { useCart } from "../../Context/cart-context";
 import { useWishlist } from "../../Context/wishlist-context";
 import { useAuth } from "../../Context/auth-context";
+import { SearchBar } from "../SearchBar/SearchBar";
 
 export const Header = () => {
   const { auth, setAuth } = useAuth();
@@ -36,20 +37,7 @@ export const Header = () => {
           <div>Products</div>
         </NavLink>
         <div className="left-side">
-
-        <div
-          className="input-parent"
-          onChange={(e) => dispatch({ type: "SEARCH", value: e.target.value })}
-        >
-          <input
-            className="ecom-input standard-input"
-            type="search"
-            placeholder="Search for products, brands and more"
-          />
-          <span id="ecom-search" className="material-icons">
-            search
-          </span>
-        </div>
+        <SearchBar/>
         <div className="ecom-group">
           {auth ? (
             <button

@@ -1,6 +1,6 @@
 
 import axios from "axios";
-export const addToCart = async (product,dispatch) => {
+export const addToCart = async (product,dispatch,toastDispatch) => {
   const getToken = () =>localStorage.getItem("token");
 
  const {data}= await axios.post(
@@ -14,6 +14,10 @@ export const addToCart = async (product,dispatch) => {
       },
     }
   );
-
   dispatch({ type: "ADD_TO_CART", payload: data.cart })
+  toastDispatch({ type: "ADD_TO_CART_TOAST", payload: true })
+
+  setTimeout(()=>{
+    toastDispatch({ type: "ADD_TO_CART_TOAST", payload: false })
+  },2000)
 };

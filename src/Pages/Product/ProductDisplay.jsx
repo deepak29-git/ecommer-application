@@ -5,21 +5,25 @@ import { addToWishlist } from "../../Utilities/add-to-wishlist";
 import { useWishlist } from "../../Context/wishlist-context";
 import { useAuth } from "../../Context/auth-context";
 import { removeFromWishlist } from "../../Utilities/remove-from-wishlist";
+import { useToast } from "../../Context/toast-context";
 
 export const ProductDisplay = ({ product }) => {
   const { dispatch, state } = useCart();
   const { wishlistState, wishlistDispatch } = useWishlist();
   const { wishlistItem } = wishlistState;
   const { cartItem } = state;
+  const {toastDispatch}=useToast()
 
   const { auth } = useAuth();
   const navigate = useNavigate();
 
   const wishlistHandler = (product) => {
     if (wishlistItem.find((item) => item._id === product._id)) {
-      removeFromWishlist(product, wishlistDispatch);
+      removeFromWishlist(product, wishlistDispatch,toastDispatch);
+      
     } else if (auth) {
-      addToWishlist(product, wishlistDispatch);
+      addToWishlist(product, wishlistDispatch,toastDispatch);
+      
     } else {
       navigate("/login");
     }
@@ -33,7 +37,7 @@ export const ProductDisplay = ({ product }) => {
         </Link>
         {wishlistItem.find((item) => item._id === product._id) ? (
           <span
-            id="wishlist-icon"
+            id="wishlist-icon"  
             className="material-icons icon wishlisted"
             onClick={() => wishlistHandler(product)}
           >
@@ -72,14 +76,13 @@ export const ProductDisplay = ({ product }) => {
             <button
               className="btn btn-primary product-page-btn"
               onClick={() =>
-                auth ? addToCart(product, dispatch) : navigate("/login")
+                auth ? addToCart(product, dispatch,toastDispatch) : navigate("/login")
               }
             >
               Add to Cart
             </button>
           )}
-
-      </main>
+    </main>
     </>
   );
 };

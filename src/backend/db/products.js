@@ -42,7 +42,7 @@ export const products = [
     _id: "b3",
     brand: "Puma",
     categoryName: "Women",
-    title: "Metallic Nights Biker Jacket",
+    title: "Metallic Biker Jacket",
     image:
       "https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/16855258/2022/1/18/b48704d6-03c5-4dba-9321-854257d8c5b01642487415429Jackets1.jpg",
     price: 2474,

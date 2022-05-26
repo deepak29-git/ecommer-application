@@ -5,20 +5,24 @@ import { addToCart } from "../../Utilities/add-to-cart";
 import { qtyHandler } from "../../Utilities/qty-handler";
 import { removeFromWishlist } from "../../Utilities/remove-from-wishlist";
 import "../WishList/WishList.css";
+import { useToast } from "../../Context/toast-context";
+import { Toast } from "../../components/Toast/Toast";
+import { useNavigate } from "react-router-dom";
 
 export const WishList = () => {
   const { wishlistState, wishlistDispatch } = useWishlist();
-
+  const {toastState:{addToCartToast,removeFromCartToast,addToWishlistToast,removeFromWishlistToast},toastDispatch}=useToast()
   const { wishlistItem } = wishlistState;
   const { state, dispatch } = useCart();
   const { cartItem } = state;
+  const navigate=useNavigate()
   const moveToCart = (product) => {
     if (cartItem.find((item) => item._id === product._id)) {
       qtyHandler(product, "increment", dispatch);
-      removeFromWishlist(product, wishlistDispatch);
+      removeFromWishlist(product, wishlistDispatch,toastDispatch);
     } else {
-      addToCart(product, dispatch);
-      removeFromWishlist(product, wishlistDispatch);
+      addToCart(product, dispatch,toastDispatch);
+      removeFromWishlist(product, wishlistDispatch,toastDispatch);
     }
   };
 
@@ -33,10 +37,12 @@ export const WishList = () => {
               display: "flex",
               alignItems: "center",
               height: "80vh",
+              flexDirection:"column",
               justifyContent: "center",
             }}
           >
-            <h1>YOUR WISHLIST IS EMPTY</h1>
+            <h1 className="mb-1">YOUR WISHLIST IS EMPTY</h1>
+            <button onClick={()=>navigate('/products')} className="btn btn-outline-primary continue-shop-btn">Continue shopping</button>
           </div>
         ) : (
           wishlistItem.map((product) => {
@@ -65,26 +71,33 @@ export const WishList = () => {
                     <span
                       className="material-icons icon wishlisted wishlist-cross-icon"
                       onClick={() =>
-                        removeFromWishlist(product, wishlistDispatch)
+                        removeFromWishlist(product, wishlistDispatch,toastDispatch)
                       }
                     >
                       highlight_off
                     </span>
                     <div className="center mb-1">
-                      <button
+                     
+                    </div>
+                  </div>
+                    <button
                         onClick={() => moveToCart(product)}
-                        className="btn btn-outline-primary center go-to-cart"
+                        className="btn btn-outline-primary go-to-cart"
                       >
                         Move to Cart
                       </button>
-                    </div>
-                  </div>
                 </div>
+                {addToCartToast&&<Toast text="Item added to cart"/>}
+          {removeFromCartToast&&<Toast text="Item removed from cart"/>}
+          {addToWishlistToast&&<Toast text="Item added to wishlist"/>}
+          {removeFromWishlistToast&&<Toast text="Item removed from wishlist"/>}
               </main>
             );
           })
         )}
+         
       </div>
+     
     </>
   );
 };

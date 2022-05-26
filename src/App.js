@@ -8,6 +8,7 @@ import { Signup } from "./Pages/Signup/Signup";
 import { Cart } from "./Pages/Cart/Cart";
 import { NotFound } from "./Pages/NotFound/NotFound";
 import { ProductDetails } from "./Pages/ProductDetails/ProductDetails";
+import { OrderSummary } from "./Pages/OrderSummary/OrderSummary";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/order_summary" element={<OrderSummary />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />

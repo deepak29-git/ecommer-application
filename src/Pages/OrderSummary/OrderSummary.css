@@ -1,0 +1,10 @@
+.order-summary-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.success-text{
+    text-align: center;
+}

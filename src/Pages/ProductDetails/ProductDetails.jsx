@@ -12,13 +12,15 @@ import { useAuth } from "../../Context/auth-context";
 import { useWishlist } from "../../Context/wishlist-context";
 import { addToWishlist } from "../../Utilities/add-to-wishlist";
 import { removeFromWishlist } from "../../Utilities/remove-from-wishlist";
+import { useToast } from "../../Context/toast-context";
+import { Toast } from "../../components/Toast/Toast";
 export const ProductDetails = () => {
   const [productDetails, setProductDetails] = useState([]);
   const { id } = useParams();
-  console.log(id,"product-details")
   const { state, dispatch } = useCart();
   const { wishlistState, wishlistDispatch } = useWishlist();
   const { wishlistItem } = wishlistState;
+  const {toastState:{addToCartToast,removeFromCartToast,addToWishlistToast,removeFromWishlistToast},toastDispatch}=useToast()
   const { cartItem } = state;
   const { auth } = useAuth();
   const navigate = useNavigate();
@@ -37,9 +39,9 @@ export const ProductDetails = () => {
 
   const wishlistHandler = (product) => {
     if (wishlistItem.find((item) => item._id === product._id)) {
-      removeFromWishlist(product, wishlistDispatch);
+      removeFromWishlist(product, wishlistDispatch,toastDispatch);
     } else if (auth) {
-      addToWishlist(product, wishlistDispatch);
+      addToWishlist(product, wishlistDispatch,toastDispatch);
     } else {
       navigate("/login");
     }
@@ -104,7 +106,7 @@ export const ProductDetails = () => {
             <button
               className="btn add-to-cart btn-primary"
               onClick={() =>
-                auth ? addToCart(productDetails, dispatch) : navigate("/login")
+                auth ? addToCart(productDetails, dispatch,toastDispatch) : navigate("/login")
               }
             >
               Add to Cart
@@ -112,6 +114,10 @@ export const ProductDetails = () => {
           )}
         </div>
       </div>
+      {addToCartToast&&<Toast text="Item added to cart"/>}
+          {removeFromCartToast&&<Toast text="Item removed from cart"/>}
+          {addToWishlistToast&&<Toast text="Item added to wishlist"/>}
+          {removeFromWishlistToast&&<Toast text="Item removed from wishlist"/>}
     </>
   );
 };

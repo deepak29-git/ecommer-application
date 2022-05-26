@@ -42,6 +42,10 @@
   cursor: pointer;
 }
 
+.continue-shop-btn{
+  font-size: 1rem;
+}
+
 .qty-title {
   margin-right: 0.5rem;
 }

@@ -4,6 +4,7 @@ import {Baner} from "../../components/Baner/Baner"
 import {Footer} from "../../components/Footer/Footer"
 
 const Home=()=>{
+
     return(
     <div>
     <Header/>

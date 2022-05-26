@@ -5,6 +5,9 @@ import "./Cart.css";
 import { useWishlist } from "../../Context/wishlist-context";
 import { removeFromCart } from "../../Utilities/remove-from-cart";
 import { addToWishlist } from "../../Utilities/add-to-wishlist";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "../../Context/toast-context";
+import { Toast } from "../../components/Toast/Toast";
 
 
 export const Cart = () => {
@@ -12,15 +15,8 @@ export const Cart = () => {
   const { cartItem } = state;
   const {wishlistState, wishlistDispatch } = useWishlist();
   const {wishlistItem}=wishlistState
-
-  const moveToWishlist = (product) => {
-    if(wishlistItem.find(item=>item._id===product._id)){
-      removeFromCart(product, dispatch);
-    }else{
-      addToWishlist(product, wishlistDispatch);
-      removeFromCart(product, dispatch);
-    }
-  };
+  const {toastState:{addToCartToast,removeFromCartToast,addToWishlistToast,removeFromWishlistToast},toastDispatch}=useToast()
+  const navigate=useNavigate()
 
   let original_price = 0;
   let discount_price = 0;
@@ -30,6 +26,45 @@ export const Cart = () => {
     discount_price += product.price*product.qty * (10 / 100);
     delivery_charges = product.price * (15 / 100);
   });
+
+
+  const moveToWishlist = (product) => {
+    if(wishlistItem.find(item=>item._id===product._id)){
+      removeFromCart(product, dispatch,toastDispatch);
+    }else{
+      addToWishlist(product, wishlistDispatch,toastDispatch);
+      removeFromCart(product, dispatch,toastDispatch);
+    }
+  };
+
+  const placeOrderHandler=()=>{
+    var options = {
+      key: "rzp_test_XBpNClg6xjZMJk",
+      amount:   ((original_price -discount_price +delivery_charges)*100).toFixed(0), 
+      currency: "INR",
+      name: "Shopio Corp",
+      description: "shop now",
+      handler: function (response){
+          dispatch({type:"CHECKOUT",payload:response.razorpay_payment_id})
+          navigate("/order_summary")
+        },
+        prefill: {
+          name: "Deepak Goyal",
+          email: "deepak123@gmail.com",
+          contact: "8871807261"
+        },
+      notes: {
+          "address": "Razorpay Corporate Office"
+      },
+      theme: {
+          color: "#3399cc"
+      }
+  };
+  
+  const rzp1 = new window.Razorpay(options)
+  rzp1.open()
+}
+
 
   return (
     <>
@@ -45,9 +80,11 @@ export const Cart = () => {
                 alignItems: "center",
                 height: "80vh",
                 justifyContent: "center",
+                flexDirection:"column"
               }}
             >
-              <h1 className="">YOUR CART IS EMPTY</h1>
+              <h1 className="mb-1" >YOUR CART IS EMPTY</h1>
+              <button onClick={()=>navigate('/products')} className="btn btn-outline-primary continue-shop-btn">Continue shopping</button>
             </div>
           ) : (
             cartItem.map((product) => {
@@ -123,7 +160,7 @@ export const Cart = () => {
                         </div>
                         <div className="btn-group ">
                           <button
-                            onClick={() => removeFromCart(product, dispatch)}
+                            onClick={() => removeFromCart(product, dispatch,toastDispatch)}
                             className="cart-btn btn-primary"
                           >
                             Remove from Cart
@@ -181,7 +218,7 @@ export const Cart = () => {
                 </p>
               </div>
               <div className="btn-group">
-                <button className="btn btn-primary mt-1" id="login-btn">
+                <button onClick={()=>placeOrderHandler()} className="btn btn-primary mt-1" id="login-btn">
                   PLACE ORDER
                 </button>
               </div>
@@ -189,6 +226,10 @@ export const Cart = () => {
           </div>
         )}
       </div>
+      {addToCartToast&&<Toast text="Item added to cart"/>}
+          {removeFromCartToast&&<Toast text="Item removed from cart"/>}
+          {addToWishlistToast&&<Toast text="Item added to wishlist"/>}
+          {removeFromWishlistToast&&<Toast text="Item removed from wishlist"/>}
     </>
   );
 };
