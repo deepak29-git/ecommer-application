@@ -6,7 +6,7 @@ import { useWishlist } from "../../Context/wishlist-context";
 import { useAuth } from "../../Context/auth-context";
 import { removeFromWishlist } from "../../Utilities/remove-from-wishlist";
 import { useToast } from "../../Context/toast-context";
-
+import fastDelivery from '../../assets/fast-delivery.png'
 export const ProductDisplay = ({ product }) => {
   const { dispatch, state } = useCart();
   const { wishlistState, wishlistDispatch } = useWishlist();
@@ -33,7 +33,7 @@ export const ProductDisplay = ({ product }) => {
     <>
       <main className="ecom-card ">
         <Link to={`/products/${product._id}`}>
-          <img src={product.image} alt={product.title} />
+          <img className="card-image" src={product.image} alt={product.title} />
         </Link>
         {wishlistItem.find((item) => item._id === product._id) ? (
           <span
@@ -53,16 +53,18 @@ export const ProductDisplay = ({ product }) => {
           </span>
         )}
         <div className="card-content">
+          <div className="space-between">
         <h3 className="card-title">{product.brand}</h3>
+        {product.fastDelivery ? (
+          <img className="icon" src={fastDelivery} alt="fast-delivery"/>
+          ) : (
+            <div></div>
+            )}
+        </div>
         <p>{product.title}</p>
         <p>{product.categoryName}</p>
         <p>₹{product.price}</p>
-        {product.inStock ? <div>In Stock</div> : <div>Out of Stock</div>}
-        {product.fastDelivery ? (
-          <div>Fast Delivery</div>
-          ) : (
-            <div>5 Days Minimum</div>
-            )}
+        {product.inStock ? <div>In Stock</div> : <div className="out-of-stock-badge">out of stock</div>}
         <p>Rating:{product.rating}⭐</p>
             </div>
         {cartItem.find((item) => item._id === product._id) ? (

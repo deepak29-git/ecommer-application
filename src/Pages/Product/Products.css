@@ -35,14 +35,27 @@
   border-radius: 20px;
   position: relative;
   box-shadow: none;
-  width: 13rem;
+  width: 15rem;
 }
 
 .product-page-btn{
-  width: 13rem;
+  width: 15rem;
   border-radius: 0;
 }
 
+.card-image{
+  width: 15rem;
+}
+
+
+.out-of-stock-badge{
+  background-color: var(--red-color);
+  color: var(--white-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5px;
+}
 @media only screen and (max-width: 1288px) {
   .ecom-main {
     grid-column: 4 / 6  ;
