@@ -31,9 +31,9 @@ export const ProductDisplay = ({ product }) => {
 
   return (
     <>
-      <main className="ecom-card ">
+      <main className="ecom-card">
         <Link to={`/products/${product._id}`}>
-          <img className="card-image" src={product.image} alt={product.title} />
+          <img className={`${!product.inStock?"blur-bg":"card-image"}`} src={product.image} alt={product.title} />
         </Link>
         {wishlistItem.find((item) => item._id === product._id) ? (
           <span
@@ -57,14 +57,12 @@ export const ProductDisplay = ({ product }) => {
         <h3 className="card-title">{product.brand}</h3>
         {product.fastDelivery ? (
           <img className="icon" src={fastDelivery} alt="fast-delivery"/>
-          ) : (
-            <div></div>
-            )}
+          ):<div className="mb-2"></div>}
         </div>
         <p>{product.title}</p>
         <p>{product.categoryName}</p>
         <p>₹{product.price}</p>
-        {product.inStock ? <div>In Stock</div> : <div className="out-of-stock-badge">out of stock</div>}
+        {!product.inStock && <div className="out-of-stock-badge">out of stock</div>}
         <p>Rating:{product.rating}⭐</p>
             </div>
         {cartItem.find((item) => item._id === product._id) ? (
@@ -75,7 +73,7 @@ export const ProductDisplay = ({ product }) => {
               Go To Cart
             </button>
           ) : (
-            <button
+            <button disabled={!product.inStock?true:false}
               className="btn btn-primary product-page-btn"
               onClick={() =>
                 auth ? addToCart(product, dispatch,toastDispatch) : navigate("/login")

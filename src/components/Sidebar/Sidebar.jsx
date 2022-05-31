@@ -68,7 +68,7 @@ export const Sidebar = () => {
               step="any"
             />
             <datalist id="tickmarks" className="space-between">
-              <option value="0" label="min 0"></option>
+              <option value="0" label="Min 0"></option>
               <option value="1000"></option>
               <option value="2000"></option>
               <option value="3000"></option>

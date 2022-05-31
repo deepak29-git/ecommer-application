@@ -38,7 +38,8 @@ export const Cart = () => {
   };
 
   const placeOrderHandler=()=>{
-    var options = {
+    // navigate('/address')
+    const options = {
       key: "rzp_test_XBpNClg6xjZMJk",
       amount:   ((original_price -discount_price +delivery_charges)*100).toFixed(0), 
       currency: "INR",

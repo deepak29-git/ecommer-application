@@ -8,7 +8,6 @@ import { SearchBar } from "../SearchBar/SearchBar";
 
 export const Header = () => {
   const { auth, setAuth } = useAuth();
-  const { dispatch } = useFilter();
   const { state } = useCart();
   const { cartItem } = state;
   const { wishlistState } = useWishlist();

@@ -27,7 +27,6 @@ export const Products = () => {
     includeOutOfStock,
     fastDelivery,
     search,
-
     clearAll,
   } = state;
 
@@ -48,6 +47,7 @@ export const Products = () => {
   const dataClear = getClearAll(sortedByFastDelivery, clearAll);
   const searchProduct = getSearch(dataClear, search);
   const sortedData = getCategory(searchProduct, category);
+
 
   return (
     <div>

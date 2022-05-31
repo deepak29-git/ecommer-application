@@ -47,6 +47,10 @@
   width: 15rem;
 }
 
+.blur-bg{
+  filter: blur(2px);
+  width: 15rem;
+}
 
 .out-of-stock-badge{
   background-color: var(--red-color);

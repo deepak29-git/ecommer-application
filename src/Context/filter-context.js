@@ -5,7 +5,7 @@ const FilterContext = createContext(null);
 
 const FilterProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
-    search:null,
+    search:"",
     sorting: null,
     priceRange: 5000,
     homeCategory:{},
