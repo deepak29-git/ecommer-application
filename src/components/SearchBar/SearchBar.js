@@ -15,28 +15,19 @@ export const SearchBar = () => {
     }
   }, [search]);
 
-  function debounce(func, delay) {
-    let timer;
-    return function (e) {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        func(e);
-      }, delay);
-    };
-  }
 
   const onChangeHandler = (e) => {
     dispatch({ type: "SEARCH", value: e.target.value });
   };
 
-  const betterFunc = debounce(onChangeHandler, 300);
   return (
     <div className="input-parent">
       <input
         className="ecom-input standard-input"
         type="search"
         ref={inputRef}
-        onChange={betterFunc}
+        value={search}
+        onChange={onChangeHandler}
         placeholder="Search for products, brands and more"
       />
       <span id="ecom-search" className="material-icons">
