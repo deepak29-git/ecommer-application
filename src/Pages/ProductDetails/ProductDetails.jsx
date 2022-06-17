@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCart } from "../../Context/cart-context";
 import "../ProductDetails/ProductDetails.css";
-import { Header } from "../../components/Header/Header";
 import "../Product/Products.css";
 import "../ProductDetails/ProductDetails.css";
 import { useAxios } from "../../Api-data/useAxios";
@@ -14,17 +13,28 @@ import { addToWishlist } from "../../Utilities/add-to-wishlist";
 import { removeFromWishlist } from "../../Utilities/remove-from-wishlist";
 import { useToast } from "../../Context/toast-context";
 import { Toast } from "../../components/Toast/Toast";
+import { Loader } from "../../components/Loader/Loader";
+import buttonLoader from '../../assets/buttonLoader.gif'
+
 export const ProductDetails = () => {
   const [productDetails, setProductDetails] = useState([]);
   const { id } = useParams();
   const { state, dispatch } = useCart();
   const { wishlistState, wishlistDispatch } = useWishlist();
   const { wishlistItem } = wishlistState;
-  const {toastState:{addToCartToast,removeFromCartToast,addToWishlistToast,removeFromWishlistToast},toastDispatch}=useToast()
+  const {
+    toastState: {
+      addToCartToast,
+      removeFromCartToast,
+      addToWishlistToast,
+      removeFromWishlistToast,
+    },
+    toastDispatch,
+  } = useToast();
   const { cartItem } = state;
   const { auth } = useAuth();
   const navigate = useNavigate();
-  const { loader, setLoader } = useAxios();
+  const {loader, setLoader } = useAxios();
 
   useEffect(() => {
     getApi();
@@ -39,9 +49,9 @@ export const ProductDetails = () => {
 
   const wishlistHandler = (product) => {
     if (wishlistItem.find((item) => item._id === product._id)) {
-      removeFromWishlist(product, wishlistDispatch,toastDispatch);
+      removeFromWishlist(product, wishlistDispatch, toastDispatch);
     } else if (auth) {
-      addToWishlist(product, wishlistDispatch,toastDispatch);
+      addToWishlist(product, wishlistDispatch, toastDispatch);
     } else {
       navigate("/login");
     }
@@ -49,7 +59,6 @@ export const ProductDetails = () => {
 
   return (
     <>
-      <Header />
       <div className="products-details-container">
         <div className="wishlist-icon-container mt-4">
           <img src={productDetails.image} alt={productDetails.title} />
@@ -79,14 +88,7 @@ export const ProductDetails = () => {
           <p className="fs-4 mb-half mt-half">
             Brand: <span className="grey-text">{productDetails.brand}</span>
           </p>
-          {loader && (
-            <div className="loading-gif">
-              <img
-                src="https://c.tenor.com/gJLmlIn6EvEAAAAC/loading-gif.gif"
-                alt="loading"
-              />
-            </div>
-          )}
+          <Loader />
           <p className="mb-half">
             Product Details:{" "}
             <span className="grey-text">{productDetails.description}</span>
@@ -97,27 +99,32 @@ export const ProductDetails = () => {
 
           {cartItem.find((item) => item._id === productDetails._id) ? (
             <button
-              className="btn add-to-cart btn-primary"
+            className="btn product-page-btn btn-primary"
               onClick={() => navigate("/cart")}
             >
               Go To Cart
+              
+              
             </button>
           ) : (
-            <button
-              className="btn add-to-cart btn-primary"
-              onClick={() =>
-                auth ? addToCart(productDetails, dispatch,toastDispatch) : navigate("/login")
+            productDetails.inStock&&<button
+              disabled={loader ? true:false}
+              className={loader?"disable-btn btn product-page-btn":`btn btn-primary product-page-btn`}
+              onClick={() =>{
+                auth ? addToCart(productDetails, dispatch,toastDispatch,setLoader) : navigate("/login")
+              }
               }
             >
-              Add to Cart
+              {loader?<img className="loader-icon" src={buttonLoader} alt="...loading"/>:"Add to Cart"}
+              
             </button>
           )}
         </div>
       </div>
-      {addToCartToast&&<Toast text="Item added to cart"/>}
-          {removeFromCartToast&&<Toast text="Item removed from cart"/>}
-          {addToWishlistToast&&<Toast text="Item added to wishlist"/>}
-          {removeFromWishlistToast&&<Toast text="Item removed from wishlist"/>}
+      {addToCartToast && <Toast text="Item added to cart" />}
+      {removeFromCartToast && <Toast text="Item removed from cart" />}
+      {addToWishlistToast && <Toast text="Item added to wishlist" />}
+      {removeFromWishlistToast && <Toast text="Item removed from wishlist" />}
     </>
   );
 };

@@ -70,7 +70,6 @@ export const Signup = () => {
 
   return (
     <>
-      <Header />
       <main className="login signup mt-4">
         <div className="login-container ">
           <h3 className="center-text">Signup</h3>

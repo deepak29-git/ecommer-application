@@ -8,7 +8,6 @@ const navigate=useNavigate()
 
   return (
     <>
-    <Header/>
       <div className="order-summary-container">
           <div>
           <h3 className="success-text mb-1" >Your Order placed successfully</h3>

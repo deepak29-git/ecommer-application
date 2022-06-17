@@ -6,21 +6,10 @@ const FilterContext = createContext(null);
 const FilterProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
     search:"",
-    sorting: null,
+    sorting: "",
     priceRange: 5000,
     homeCategory:{},
     ratings: null,
-    brand: {
-      roadster: false,
-      nautica: false,
-      puma: false,
-      adidas: false,
-      hAndm: false,
-      colorbar: false,
-      klotthe: false,
-      talesAndStories: false,
-      dove: false,
-    },
     includeOutOfStock: false,
     fastDelivery: false,
     clearAll: false,
@@ -32,6 +21,7 @@ const FilterProvider = ({ children }) => {
       homeAndliving:false,
       beauty:false
     },
+    // filterByCategory:""
 
   });
 

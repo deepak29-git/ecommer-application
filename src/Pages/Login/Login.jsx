@@ -74,7 +74,6 @@ export const Login = () => {
 
   return (
     <>
-      <Header />
       <main className="login">
         <div className="login-container mt-2">
           <h3 className="center-text">Login</h3>

@@ -1,6 +1,19 @@
-/* .address-container{
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    border: 1px solid var(--grey-color);
-} */
+.parent-container {
+  display: flex;
+  margin-top: 6rem;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.address-details {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  
+}
+
+.address-box{
+    border: 2px solid black;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}

@@ -7,8 +7,9 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
-    _id: "b1",
+    _id: uuid(),
     brand: "Roadster",
+    roadster:true,
     categoryName: "Men",
     title: "Pure Cotton T-shirt",
     image:
@@ -23,8 +24,9 @@ export const products = [
     rating: 5,
   },
   {
-    _id: "b2",
+    _id: uuid(),
     brand: "Nautica",
+    nautica:true,
     categoryName: "Men",
     title: "Solid Polo Collar T-shirt",
     image:
@@ -39,8 +41,9 @@ export const products = [
     rating: 5,
   },
   {
-    _id: "b3",
+    _id:uuid(),
     brand: "Puma",
+    puma:true,
     categoryName: "Women",
     title: "Metallic Biker Jacket",
     image:
@@ -59,10 +62,11 @@ export const products = [
     rating: 4,
   },
   {
-    _id: "b4",
-    brand: "ADIDAS",
+    _id:uuid(),
+    brand: "Adidas",
     categoryName: "Women",
     title: "Training or Gym Jacket",
+    adidas:true,
     image:
       "https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/14795298/2021/11/17/c09f76cc-a2b4-4a9e-9dfd-ac66fda13c1b1637121500273-ADIDAS-Women-Blue-Solid-Training-or-Gym-Sporty-Jacket-521163-1.jpg",
     price: 2144,
@@ -77,7 +81,7 @@ export const products = [
   },
 
   {
-    _id: "b5",
+    _id: uuid(),
     brand: "H&M",
     categoryName: "Kids",
     title: "Girls & White Dress",
@@ -94,8 +98,9 @@ export const products = [
     rating: 3,
   },
   {
-    _id: "b6",
+    _id: uuid(),
     brand: "Colorbar",
+    colorbar:true,
     categoryName: "Beauty",
     title: "Flawless Finish Primer",
     image:
@@ -110,8 +115,8 @@ export const products = [
     rating: 5,
   },
   {
-    _id: "b7",
-    brand: "KLOTTHE",
+    _id: uuid(),
+    brand: "Klotthe",
     categoryName: "Home & Living",
     title: "210 TC Pillow Covers",
     image:
@@ -126,7 +131,7 @@ export const products = [
     rating: 1,
   },
   {
-    _id: "b8",
+    _id: uuid(),
     brand: "TALES & STORIES",
     categoryName: "Kids",
     title: "Boys Slim Fit Jeans",
@@ -143,8 +148,9 @@ export const products = [
     rating: 3,
   },
   {
-    _id: "b9",
+    _id: uuid(),
     brand: "Dove",
+    dove:true,
     categoryName: "Beauty",
     title: "Daily Shine Shampoo",
     image:

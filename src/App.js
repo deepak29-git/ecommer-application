@@ -9,11 +9,14 @@ import { Cart } from "./Pages/Cart/Cart";
 import { NotFound } from "./Pages/NotFound/NotFound";
 import { ProductDetails } from "./Pages/ProductDetails/ProductDetails";
 import { OrderSummary } from "./Pages/OrderSummary/OrderSummary";
-// import { Address } from "./components/Address/Address";
+import { Address } from "./components/Address/Address";
+import { SingleCategory } from "./Pages/SingleCategory/SingleCategory";
+import { Header } from "./components/Header/Header";
 
 function App() {
   return (
     <div className="App">
+      <Header/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
@@ -21,10 +24,11 @@ function App() {
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/order_summary" element={<OrderSummary />} />
-        {/* <Route path="/address" element={<Address />} /> */}
+        <Route path="/category/:categoryName" element={<SingleCategory/>}/>
+        <Route path="/address" element={<Address />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="*" element={<NotFound />} />
+        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </div>
   );

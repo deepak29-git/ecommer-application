@@ -7,11 +7,14 @@ import { useAuth } from "../../Context/auth-context";
 import { removeFromWishlist } from "../../Utilities/remove-from-wishlist";
 import { useToast } from "../../Context/toast-context";
 import fastDelivery from '../../assets/fast-delivery.png'
+import { useState } from "react";
+import buttonLoader from '../../assets/buttonLoader.gif'
 export const ProductDisplay = ({ product }) => {
   const { dispatch, state } = useCart();
   const { wishlistState, wishlistDispatch } = useWishlist();
   const { wishlistItem } = wishlistState;
   const { cartItem } = state;
+  const [loader,setLoader]=useState(false)
   const {toastDispatch}=useToast()
 
   const { auth } = useAuth();
@@ -71,15 +74,20 @@ export const ProductDisplay = ({ product }) => {
               onClick={() => navigate("/cart")}
             >
               Go To Cart
+              
+              
             </button>
           ) : (
-            <button disabled={!product.inStock?true:false}
-              className="btn btn-primary product-page-btn"
-              onClick={() =>
-                auth ? addToCart(product, dispatch,toastDispatch) : navigate("/login")
+            product.inStock&&<button
+              disabled={loader ? true:false}
+              className={loader?"disable-btn btn product-page-btn":`btn btn-primary product-page-btn`}
+              onClick={() =>{
+                auth ? addToCart(product, dispatch,toastDispatch,setLoader) : navigate("/login")
+              }
               }
             >
-              Add to Cart
+              {loader?<img className="loader-icon" src={buttonLoader} alt="...loading"/>:"Add to Cart"}
+              
             </button>
           )}
     </main>

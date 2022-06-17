@@ -1,4 +1,3 @@
-import { useFilter } from "../../Context/filter-context";
 import "./Header.css";
 import { Link, NavLink, useNavigate, } from "react-router-dom";
 import { useCart } from "../../Context/cart-context";
@@ -32,8 +31,11 @@ export const Header = () => {
             Shop<span className="ui-text">io</span>
           </h2>
         </Link>
+        <NavLink  className="navlink" to="/">
+          <div>Home</div>
+        </NavLink>
         <NavLink  className="navlink" to="/products">
-          <div>Products</div>
+          <div>All Products</div>
         </NavLink>
         <div className="left-side">
         <SearchBar/>

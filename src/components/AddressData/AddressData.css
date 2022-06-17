@@ -1,0 +1,19 @@
+.btn-container{
+    display: flex;
+    justify-content: space-between;
+}
+.form-container{
+    border: 1px solid var(--black-color);
+    width: 27rem;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+.modal-container{
+ position: fixed;
+ left: 35%;
+ z-index: 1;
+ top: 13%;
+ background-color: var(--white-color);
+}

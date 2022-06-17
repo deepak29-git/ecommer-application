@@ -28,7 +28,6 @@ export const WishList = () => {
 
   return (
     <>
-      <Header />
       <h2 className="center-text my-1">My Wishlist ({wishlistItem.length})</h2>
       <div className={`${wishlistItem.length > 0 && `wishlist-parent`}`}>
         {wishlistItem.length === 0 ? (

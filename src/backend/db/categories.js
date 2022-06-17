@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const categories = [
   {
-    _id: "f1",
+    _id: uuid(),
     categoryName: "Men",
     categoryImage:"https://cdn.shopify.com/s/files/1/2219/4051/files/mens_banner_d378ca01-0c0f-44d9-b3fb-45bcd2680905_1024x1024_crop_center.jpg?v=1645085668",
     description:"this is about men"

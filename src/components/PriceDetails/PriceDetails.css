@@ -1,0 +1,4 @@
+.disable-btn-checkout{
+    background-color: var(--grey-color);
+    color: var(--black-color);
+}
