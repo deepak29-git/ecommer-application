@@ -20,17 +20,26 @@ export const ProductDisplay = ({ product }) => {
   const { auth } = useAuth();
   const navigate = useNavigate();
 
-  const wishlistHandler = (product) => {
-    if (wishlistItem.find((item) => item._id === product._id)) {
-      removeFromWishlist(product, wishlistDispatch,toastDispatch);
-      
-    } else if (auth) {
-      addToWishlist(product, wishlistDispatch,toastDispatch);
-      
-    } else {
-      navigate("/login");
+  const throttle=(cb,delay)=>{
+    let timer;
+    let flag=true
+    return function(product){
+      if(flag){
+       cb(product)
+       flag=false;
+       clearTimeout(timer)
+      }
+      timer=setTimeout(()=>{
+        flag=true
+      },delay)
     }
-  };
+  }
+
+  const getData=(product)=>{
+    auth? addToWishlist(product, wishlistDispatch,toastDispatch):navigate("/login")
+    console.log("getdata")
+  }
+  const throttleFunction=throttle(getData,500)
 
   return (
     <>
@@ -42,7 +51,7 @@ export const ProductDisplay = ({ product }) => {
           <span
             id="wishlist-icon"  
             className="material-icons icon wishlisted"
-            onClick={() => wishlistHandler(product)}
+            onClick={() =>  removeFromWishlist(product, wishlistDispatch,toastDispatch)}
           >
             favorite
           </span>
@@ -50,7 +59,7 @@ export const ProductDisplay = ({ product }) => {
           <span
             id="wishlist-icon"
             className="material-icons icon"
-            onClick={() => wishlistHandler(product)}
+            onClick={()=>throttleFunction(product)}
           >
             favorite_border
           </span>
