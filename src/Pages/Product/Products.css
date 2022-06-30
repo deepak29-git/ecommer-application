@@ -16,6 +16,13 @@
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
+.center-txt{
+   position: absolute;
+   left: 60%;
+   top: 50%;
+   transform: translate(100px -100px); 
+}
+
 #wishlist-icon {
   position: absolute;
   top: 0;

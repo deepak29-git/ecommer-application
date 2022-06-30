@@ -9,6 +9,7 @@ export const PriceDetails = ({
   const navigate = useNavigate();
   const {
     state: { cartItem },
+    dispatch,
   } = useCart();
 
   const placeOrderHandler = () => {
@@ -36,8 +37,8 @@ export const PriceDetails = ({
       name: "Shopio Corp",
       description: "shop now",
       handler: function (response) {
-        dispatch({ type: "CHECKOUT", payload: response.razorpay_payment_id });
         navigate("/order_summary");
+        dispatch({ type: "CHECKOUT", payload: response.razorpay_payment_id });
       },
       prefill: {
         name: "Deepak Goyal",
@@ -108,9 +109,7 @@ export const PriceDetails = ({
                       : "btn btn-primary mt-1"
                   }
                   disabled={
-                    addressSelector || !printAddress.length === 0
-                      ? false
-                      : true 
+                    addressSelector || !printAddress.length === 0 ? false : true
                   }
                   onClick={() => checkoutHandler()}
                   id="login-btn"

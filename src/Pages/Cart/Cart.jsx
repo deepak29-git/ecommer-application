@@ -34,7 +34,7 @@ export const Cart = () => {
     }
   };
 
- 
+
   return (
     <>
       <h2 className="center-text my-1">MY CART ({cartItem.length})</h2>

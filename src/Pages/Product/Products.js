@@ -59,7 +59,7 @@ export const Products = () => {
         <div className="ecom-main">
           {loader && <Loader center="center" />}
           
-          {sortedData.length===0?<h3>No Result</h3>:sortedData.map((product) => (
+          {!loader&&sortedData.length===0?<h3 className="center-txt">No Result</h3>:sortedData.map((product) => (
             <ProductDisplay key={product._id} product={product} />
           ))}
           {addToCartToast && <Toast text="Item added to cart" />}
