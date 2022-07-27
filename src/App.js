@@ -12,21 +12,54 @@ import { OrderSummary } from "./Pages/OrderSummary/OrderSummary";
 import { Address } from "./components/Address/Address";
 import { SingleCategory } from "./Pages/SingleCategory/SingleCategory";
 import { Header } from "./components/Header/Header";
+import { RequiresAuth } from "./components/RequiresAuth/RequiresAuth";
+import { useAuth } from "./Context/auth-context";
 
 function App() {
+  const { auth } = useAuth();
   return (
     <div className="App">
-      <Header/>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetails />} />
-        <Route path="/wishlist" element={<WishList />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/order_summary" element={<OrderSummary />} />
-        <Route path="/category/:categoryName" element={<SingleCategory/>}/>
-        <Route path="/address" element={<Address />} />
-        <Route path="/login" element={<Login />} />
+
+        <Route
+          path="/wishlist"
+          element={
+            <RequiresAuth>
+              <WishList />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <RequiresAuth>
+              <Cart />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/order_summary"
+          element={
+            <RequiresAuth>
+              <OrderSummary />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/address"
+          element={
+            <RequiresAuth>
+              <Address />
+            </RequiresAuth>
+          }
+        />
+
+        <Route path="/category/:categoryName" element={<SingleCategory />} />
+        {!auth && <Route path="/login" element={<Login />} />}
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
